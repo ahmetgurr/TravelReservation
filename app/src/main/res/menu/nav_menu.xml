@@ -13,5 +13,4 @@
         android:id="@+id/settingFragment"
         android:icon="@drawable/ic_settings"
         android:title="Setting" />
-
 </menu>

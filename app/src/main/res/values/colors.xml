@@ -23,4 +23,10 @@
 
     <color name="beige">#FCD9D9</color>
     <color name="red">#AE2F2F</color>
+
+
+    <color name="colorPrimaryDark">#3262C4</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorRed">#C11515</color>
 </resources>

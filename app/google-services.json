@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "962860148192",
+    "project_id": "travelreservation-8bcb6",
+    "storage_bucket": "travelreservation-8bcb6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962860148192:android:e648ec404c97a213e5b785",
+        "android_client_info": {
+          "package_name": "com.example.travelreservation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCil-efMP_fddBNSNlpctXC5gDK6386U4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
