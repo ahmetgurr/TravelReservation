@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/blue_300"
-        tools:context=".LoginActivity">
+        tools:context=".ui.login.LoginActivity">
 
 
         <TextView
@@ -24,7 +24,7 @@
             app:layout_constraintVertical_bias="0.13" />
 
     <EditText
-        android:id="@+id/passwordText"
+        android:id="@+id/loginPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -40,13 +40,13 @@
         android:paddingBottom="10dp"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="@+id/emailText"
+        app:layout_constraintEnd_toEndOf="@+id/loginEmail"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/emailText"
-        app:layout_constraintTop_toBottomOf="@+id/emailText" />
+        app:layout_constraintStart_toStartOf="@+id/loginEmail"
+        app:layout_constraintTop_toBottomOf="@+id/loginEmail" />
 
         <EditText
-            android:id="@+id/emailText"
+            android:id="@+id/loginEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -78,19 +78,19 @@
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/passwordText"
-            app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+            app:layout_constraintEnd_toEndOf="@+id/loginPassword"
+            app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
 
         <Button
-            android:id="@+id/signInClicked"
+            android:id="@+id/loginButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@drawable/btn_bg"
             android:onClick="signInClicked"
             android:text="Login"
-            app:layout_constraintEnd_toEndOf="@+id/passwordText"
-            app:layout_constraintStart_toStartOf="@+id/passwordText"
+            app:layout_constraintEnd_toEndOf="@+id/loginPassword"
+            app:layout_constraintStart_toStartOf="@+id/loginPassword"
             app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
 
         <LinearLayout
@@ -101,10 +101,10 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="@+id/signInClicked"
+            app:layout_constraintEnd_toEndOf="@+id/loginButton"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/signInClicked"
-            app:layout_constraintTop_toBottomOf="@+id/signInClicked">
+            app:layout_constraintStart_toStartOf="@+id/loginButton"
+            app:layout_constraintTop_toBottomOf="@+id/loginButton">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -162,4 +162,4 @@
             app:layout_constraintTop_toTopOf="@+id/btnGoogle" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

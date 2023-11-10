@@ -1,23 +1,14 @@
-package com.example.travelreservation.fragment
+package com.example.travelreservation.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuProvider
-import androidx.navigation.Navigation
-import com.example.travelreservation.LoginActivity
-import com.example.travelreservation.MainActivity
-import com.example.travelreservation.R
+import com.example.travelreservation.ui.login.LoginActivity
 import com.example.travelreservation.databinding.FragmentSettingBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 

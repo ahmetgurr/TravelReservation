@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_300"
-    tools:context=".RegisterActivity">
+    tools:context=".ui.login.RegisterActivity">
 
     <TextView
         android:id="@+id/logo"
@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.13" />
 
     <EditText
-        android:id="@+id/usernameText"
+        android:id="@+id/signupUsername"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <EditText
-        android:id="@+id/emailText"
+        android:id="@+id/signupEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -62,12 +62,12 @@
         android:paddingBottom="10dp"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="@+id/usernameText"
-        app:layout_constraintStart_toStartOf="@+id/usernameText"
-        app:layout_constraintTop_toBottomOf="@+id/usernameText" />
+        app:layout_constraintEnd_toEndOf="@+id/signupUsername"
+        app:layout_constraintStart_toStartOf="@+id/signupUsername"
+        app:layout_constraintTop_toBottomOf="@+id/signupUsername" />
 
     <EditText
-        android:id="@+id/passwordText"
+        android:id="@+id/signupPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -83,12 +83,12 @@
         android:paddingBottom="10dp"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="@+id/emailText"
-        app:layout_constraintStart_toStartOf="@+id/emailText"
-        app:layout_constraintTop_toBottomOf="@+id/emailText" />
+        app:layout_constraintEnd_toEndOf="@+id/signupEmail"
+        app:layout_constraintStart_toStartOf="@+id/signupEmail"
+        app:layout_constraintTop_toBottomOf="@+id/signupEmail" />
 
     <EditText
-        android:id="@+id/againPasswordText"
+        android:id="@+id/signupConfirm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -104,9 +104,9 @@
         android:paddingBottom="10dp"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="@+id/passwordText"
-        app:layout_constraintStart_toStartOf="@+id/passwordText"
-        app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+        app:layout_constraintEnd_toEndOf="@+id/signupPassword"
+        app:layout_constraintStart_toStartOf="@+id/signupPassword"
+        app:layout_constraintTop_toBottomOf="@+id/signupPassword" />
 
     <Button
         android:id="@+id/signUpClicked"
@@ -116,20 +116,31 @@
         android:background="@drawable/btn_bg"
         android:onClick="signUpClicked"
         android:text="Register"
-        app:layout_constraintEnd_toEndOf="@+id/againPasswordText"
-        app:layout_constraintStart_toStartOf="@+id/againPasswordText"
-        app:layout_constraintTop_toBottomOf="@+id/againPasswordText" />
+        app:layout_constraintEnd_toEndOf="@+id/signupConfirm"
+        app:layout_constraintStart_toStartOf="@+id/signupConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/signupConfirm" />
 
     <TextView
         android:id="@+id/alreadyHaveAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:onClick="goBack"
+        android:onClick="alreadyHaveAccount"
         android:shadowColor="@color/colorWhite"
         android:text="Already Have an Account?"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="@+id/signUpClicked"
         app:layout_constraintStart_toStartOf="@+id/signUpClicked"
         app:layout_constraintTop_toBottomOf="@+id/signUpClicked" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:backgroundTint="@color/blue_100"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_ios_new_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,12 @@
-package com.example.travelreservation
+package com.example.travelreservation.ui.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
+import com.example.travelreservation.MainActivity
 import com.example.travelreservation.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -29,12 +28,39 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+
+        binding.loginButton.setOnClickListener {
+            val email = binding.loginEmail.text.toString()
+            val password = binding.loginPassword.text.toString()
+            if (email.isNotEmpty() && password.isNotEmpty()){
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
+                    if (it.isSuccessful){
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.signUpClicked.setOnClickListener {
+            val signupIntent = Intent(this, RegisterActivity::class.java)
+            startActivity(signupIntent)
+            finish()
+        }
+
     }
 
+
+/*
     fun signInClicked(view: View) {
 
-        val email = binding.emailText.text.toString()
-        val password = binding.passwordText.text.toString()
+        val email = binding.loginEmail.text.toString()
+        val password = binding.loginPassword.text.toString()
 
         if (email.equals("") || password.equals("")) {
             Toast.makeText(this, "Email and password are required!", Toast.LENGTH_LONG).show()
@@ -56,8 +82,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun signUpClicked(view: View) {
-        val email = binding.emailText.text.toString()
-        val password = binding.passwordText.text.toString()
+        val email = binding.loginEmail.text.toString()
+        val password = binding.loginPassword.text.toString()
 
         if (email.equals("") || password.equals("")) {
             // If email or password is empty, show error message
@@ -78,5 +104,7 @@ class LoginActivity : AppCompatActivity() {
 
 
 
+
+ */
 
 }

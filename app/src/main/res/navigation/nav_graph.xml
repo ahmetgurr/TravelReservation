@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.travelreservation.fragment.HomeFragment"
+        android:name="com.example.travelreservation.ui.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.example.travelreservation.fragment.SettingFragment"
+        android:name="com.example.travelreservation.ui.fragment.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/travelsFragment"
-        android:name="com.example.travelreservation.fragment.TravelsFragment"
+        android:name="com.example.travelreservation.ui.fragment.TravelsFragment"
         android:label="fragment_travels"
         tools:layout="@layout/fragment_travels" />
 </navigation>

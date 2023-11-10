@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/green_100"
 
-    tools:context=".fragment.SettingFragment">
+    tools:context=".ui.fragment.SettingFragment">
 
     <TextView
         android:id="@+id/textView2"
