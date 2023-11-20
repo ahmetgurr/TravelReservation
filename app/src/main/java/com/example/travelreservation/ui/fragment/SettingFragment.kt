@@ -51,7 +51,7 @@ class SettingFragment : Fragment() {
             startActivity(intent)
             activity?.finish()
         }
-        
+
         // Kullanıcının UID'sini kontrol etme
         val user = auth.currentUser
         if (user != null) {
@@ -75,10 +75,12 @@ class SettingFragment : Fragment() {
                     // Firestore'dan kullanıcı adını al ve UI elemanına ata
                     val username = document.getString("username")
                     val email = document.getString("email")
+                    val phone = document.getString("phone")
 
                     binding.txtUsername.text =  "Username: $username"
                     binding.txtUsernamePhoto.text = "$username"
                     binding.txtEmail.text =     "Email:         $email"
+                    binding.txtPhone.text =     "Phone:       $phone"
                 } else {
                     Log.d("SettingFragment", "No such document")
                 }

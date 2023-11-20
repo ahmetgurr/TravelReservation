@@ -28,9 +28,10 @@ class RegisterActivity : AppCompatActivity() {
             val email = binding.signupEmail.text.toString()
             val password = binding.signupPassword.text.toString()
             val username = binding.signupUsername.text.toString()
+            val phone = binding.signupPhone.text.toString()
 
             val confirmPassword = binding.signupConfirm.text.toString()
-            if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty() && username.isNotEmpty()){
+            if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty() && username.isNotEmpty() && phone.isNotEmpty()){
                 if (password == confirmPassword){
                     auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
                         if (it.isSuccessful){
@@ -69,6 +70,7 @@ class RegisterActivity : AppCompatActivity() {
             val userHashMap = hashMapOf<String, Any>()
             userHashMap["username"] = binding.signupUsername.text.toString()
             userHashMap["email"] = binding.signupEmail.text.toString()
+            userHashMap["phone"] = binding.signupPhone.text.toString()
 
             // Kullanıcının UID'sini kullanarak belgeyi oluştur
             db.collection("Users").document(userId).set(userHashMap)
