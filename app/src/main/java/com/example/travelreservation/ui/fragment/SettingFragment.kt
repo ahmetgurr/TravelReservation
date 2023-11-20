@@ -51,10 +51,7 @@ class SettingFragment : Fragment() {
             startActivity(intent)
             activity?.finish()
         }
-
-       // auth = Firebase.auth
-        //db = FirebaseFirestore.getInstance()
-
+        
         // Kullanıcının UID'sini kontrol etme
         val user = auth.currentUser
         if (user != null) {
@@ -91,25 +88,25 @@ class SettingFragment : Fragment() {
             }
     }
 
-/*
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.nav_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.settingFragment -> {
-                auth.signOut()
-                val intent = Intent(context, MainActivity::class.java)
-                startActivity(intent)
-                // Menü öğesi 1 seçildiğinde yapılacak işlemler
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
+    /*
+        override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+            inflater.inflate(R.menu.nav_menu, menu)
         }
-    }
 
- */
+        override fun onOptionsItemSelected(item: MenuItem): Boolean {
+            when (item.itemId) {
+                R.id.settingFragment -> {
+                    auth.signOut()
+                    val intent = Intent(context, MainActivity::class.java)
+                    startActivity(intent)
+                    // Menü öğesi 1 seçildiğinde yapılacak işlemler
+                    return true
+                }
+                else -> return super.onOptionsItemSelected(item)
+            }
+        }
+
+     */
 
 
 }
