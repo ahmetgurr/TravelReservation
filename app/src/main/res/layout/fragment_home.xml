@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,11 +9,14 @@
 
     <androidx.cardview.widget.CardView
 
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:cardCornerRadius="30dp"
-        app:cardMaxElevation="5dp">
+        app:cardMaxElevation="5dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="8dp">
 
 
         <LinearLayout
@@ -22,6 +25,7 @@
             android:orientation="vertical">
 
 
+            <!-- Location-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,6 +59,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@color/red_700" />
 
+            <!-- From -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -86,6 +91,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:background="@color/red_700" />
 
+            <!-- From To -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -118,6 +124,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@color/red_700" />
 
+            <!-- Date & Hour -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,6 +133,7 @@
                 android:orientation="horizontal"
                 android:weightSum="8">
 
+                <!-- Hours -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -149,6 +157,7 @@
                         android:text="Hours" />
                 </LinearLayout>
 
+                <!-- Date -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -175,9 +184,58 @@
 
             </LinearLayout>
 
+            <!-- Adults, Children, Infants -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:weightSum="8">
+
+                <Spinner
+                    android:id="@+id/spinnerAdults"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:prompt="@string/adults_prompt" />
+
+                <Spinner
+                    android:id="@+id/spinnerChildren"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:prompt="@string/children_prompt" />
+
+                <Spinner
+                    android:id="@+id/spinnerInfants"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:prompt="@string/infants_prompt" />
+            </LinearLayout>
+
+            <!-- Search Flight Button -->
+            <Button
+                android:id="@+id/btnSearchFlight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Search Flight" />
+
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/gecis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Deneme Ticket List"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

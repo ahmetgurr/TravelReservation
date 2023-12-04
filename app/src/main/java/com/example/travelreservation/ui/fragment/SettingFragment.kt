@@ -23,6 +23,7 @@ class SettingFragment : Fragment() {
 
     private lateinit var txtUsername: TextView
     private lateinit var txtEmail: TextView
+    private lateinit var txtPhone: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

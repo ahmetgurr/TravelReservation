@@ -25,6 +25,7 @@ class RegisterActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
 
         binding.signUpClicked.setOnClickListener{
+
             val email = binding.signupEmail.text.toString()
             val password = binding.signupPassword.text.toString()
             val username = binding.signupUsername.text.toString()

@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.travelreservation.ui.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_travelListFragment"
+            app:destination="@id/travelListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.travelreservation.ui.fragment.SettingFragment"
@@ -20,4 +24,9 @@
         android:name="com.example.travelreservation.ui.fragment.TravelsFragment"
         android:label="fragment_travels"
         tools:layout="@layout/fragment_travels" />
+    <fragment
+        android:id="@+id/travelListFragment"
+        android:name="com.example.travelreservation.ui.fragment.TravelListFragment"
+        android:label="fragment_travel_list"
+        tools:layout="@layout/fragment_travel_list" />
 </navigation>

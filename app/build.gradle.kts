@@ -71,4 +71,24 @@ dependencies {
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.5")
 
+    //amadeus
+    implementation ("com.amadeus:amadeus-android:1.3.1")
+
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
+
+    //okhttp
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.0")
+
+    //RxJava
+    implementation ("io.reactivex.rxjava2:rxjava:2.2.6")
+    implementation ("io.reactivex.rxjava2:rxandroid:2.1.1")
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+
+
+
 }
