@@ -29,9 +29,14 @@ class TravelRecyclerAdapter(
 
         override fun onBindViewHolder(holder: RowHolder, position: Int) {
 
+            holder.itemView.setOnClickListener {
+                listener.onItemClick(travelList.get(position))
+            }
+
             holder.binding.textCityFrom.text = travelList.get(position).cityFrom
             holder.binding.textCityTo.text = travelList.get(position).cityTo
             holder.binding.textDistance.text = travelList.get(position).distance
-
+            holder.binding.textHours.text = travelList.get(position).hours
+            holder.binding.textPrice.text = travelList.get(position).price
         }
 }

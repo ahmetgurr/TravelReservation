@@ -6,6 +6,6 @@ import com.example.travelreservation.service.TravelDao
 //DAO'ya erişim sağlayan sınıf
 class TravelRepository(var tdao : TravelDao) {
 
-    //seyahatleri çekmek
+    //seyahatleri çekmekxx
     //suspend fun getTravel() = tdao.travel()
 }

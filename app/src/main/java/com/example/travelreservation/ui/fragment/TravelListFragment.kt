@@ -28,6 +28,7 @@ class TravelListFragment : Fragment() {
 
     private lateinit var binding: FragmentTravelListBinding
 
+    //https://raw.githubusercontent.com/ahmetgurr/JSONDataSet/main/travell.json
     private val BASE_URL = "https://raw.githubusercontent.com/"
     private var travelModel: ArrayList<Travel>? = null
     private var recyclerViewAdapter: TravelRecyclerAdapter? = null
@@ -38,6 +39,7 @@ class TravelListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -91,6 +93,10 @@ class TravelListFragment : Fragment() {
                 }
             }
         }
+    }
+
+    fun onItemClick(travelModel: Travel) {
+        Toast.makeText(activity,"Clicked: ${travelModel.cityFrom} - ${travelModel.cityTo}",Toast.LENGTH_SHORT).show()
     }
 
 

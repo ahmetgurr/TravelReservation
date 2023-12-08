@@ -25,7 +25,8 @@ interface TravelDao {
     //@GET("/shopping/flight-offers")
     //suspend fun travel(): Response<Travel>
 
-    @GET("ahmetgurr/JSONDataSet/main/travel.json")
+    //@GET("ahmetgurr/JSONDataSet/main/travel.json")//asıl json dosyası
+    @GET("ahmetgurr/JSONDataSet/main/travell.json")
     suspend fun getData(): Response<List<Travel>>
 
 }
