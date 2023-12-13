@@ -51,7 +51,7 @@
                     android:gravity="center" />
             </LinearLayout>
 
-
+            <!-- Location View-->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -59,7 +59,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@color/red_700" />
 
-            <!-- From -->
+            <!-- From Layout -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -69,59 +69,58 @@
                 android:weightSum="4">
 
                 <ImageView
-                    android:id="@+id/start_pin_id"
+                    android:id="@+id/start_pin_id0"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight=".5"
+                    android:layout_weight="0.5"
                     app:srcCompat="@drawable/location" />
-
-                <TextView
-                    android:id="@+id/start_loc_id"
+                <AutoCompleteTextView
+                    android:id="@+id/planets_spinner_autoComplete_from"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:maxLines="1"
-                    android:text="From" />
-
+                    android:layout_weight="3.5"
+                    android:hint="Şehir seçin"
+                    android:inputType="text"
+                    android:layout_margin="16dp"/>
             </LinearLayout>
 
+            <!-- From - To View -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginHorizontal="16dp"
                 android:background="@color/red_700" />
-
-            <!-- From To -->
+            <!-- To Layout -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="8dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
                 android:weightSum="4">
 
                 <ImageView
-                    android:id="@+id/end_pin_id"
+                    android:id="@+id/end_pin_id1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight=".5"
+                    android:layout_weight="0.5"
                     app:srcCompat="@drawable/location" />
 
-                <TextView
-                    android:id="@+id/end_loc_id"
+                <AutoCompleteTextView
+                    android:id="@+id/planets_spinner_autoComplete_to"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:maxLines="1"
-                    android:text="to" />
-
+                    android:layout_weight="3.5"
+                    android:hint="Şehir seçin"
+                    android:inputType="text"
+                    android:layout_margin="16dp"/>
             </LinearLayout>
 
-
+            <!-- To View -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginHorizontal="16dp"
                 android:background="@color/red_700" />
 
             <!-- Date & Hour -->
@@ -138,7 +137,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:orientation="vertical">
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical"
+                    >
 
                     <ImageView
                         android:id="@+id/imageView3"
@@ -147,7 +148,6 @@
                         android:layout_gravity="center"
                         android:layout_weight="4"
                         app:srcCompat="@drawable/ic_schedule_24px" />
-
                     <TextView
                         android:id="@+id/Time_id"
                         android:layout_width="wrap_content"
@@ -155,6 +155,15 @@
                         android:layout_gravity="center"
                         android:layout_weight="4"
                         android:text="Hours" />
+                    <Spinner
+                        android:id="@+id/spinnerHours"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAlignment="center"
+                        android:prompt="@string/select_hours"
+                        />
+
+
                 </LinearLayout>
 
                 <!-- Date -->
@@ -162,7 +171,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginTop="15dp">
 
                     <ImageView
                         android:id="@+id/imageView4"
@@ -177,42 +187,18 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:maxLines="2"
-
                         android:text="Date" />
+
+                    <Spinner
+                        android:id="@+id/spinnerDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAlignment="center"
+                        android:prompt="@string/select_date"
+                        />
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <!-- Adults, Children, Infants -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal"
-                android:weightSum="8">
-
-                <Spinner
-                    android:id="@+id/spinnerAdults"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:prompt="@string/adults_prompt" />
-
-                <Spinner
-                    android:id="@+id/spinnerChildren"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:prompt="@string/children_prompt" />
-
-                <Spinner
-                    android:id="@+id/spinnerInfants"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:prompt="@string/infants_prompt" />
             </LinearLayout>
 
             <!-- Search Flight Button -->
@@ -222,26 +208,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:text="Search Flight" />
-
-            <!-- Spinner Menu -->
-            <Spinner
-                android:id="@+id/planets_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:id="@+id/planets_spinner1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Şehir seçin"/>
-
-            <AutoCompleteTextView
-                android:id="@+id/planets_spinner_autoComplete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Şehir seçin"
-                android:inputType="text"
-                android:layout_margin="16dp"/>
 
         </LinearLayout>
 
@@ -261,7 +227,6 @@
         android:id="@+id/deneme1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
         android:text="Deneme1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

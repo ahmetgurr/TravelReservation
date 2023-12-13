@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeFragmentViewModel
     private lateinit var travelRecyclerAdapter: TravelRecyclerAdapter
 
-    private val cities = arrayOf("İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Adana", "Eskişehir", "Trabzon")
+    private val cities = arrayOf("Malatya", "İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Adana", "Eskişehir", "Trabzon")
 
 
 
@@ -48,7 +48,6 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.bind(view)
 
-
         binding.gecis.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToTravelListFragment()
             Navigation.findNavController(it).navigate(action)
@@ -67,36 +66,58 @@ class HomeFragment : Fragment() {
         }
 
         //using spinner menu
-        val spinner = binding.planetsSpinner
-        val spinner1 = binding.planetsSpinner1
-        val spinner2 = binding.planetsSpinnerAutoComplete
+        val spinner = binding.spinnerHours
+        val spinner1 = binding.spinnerDate
+        //val spinner2 = binding.planetsSpinnerAutoComplete
 
-
+        //adapter for the "hours_days"
         ArrayAdapter.createFromResource(
             requireContext(),
-            R.array.planets_array,
+            R.array.hours_days,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
-            spinner1.adapter = adapter  // spinner1'e de aynı adapter'ı atama
-            //spinner2.adapter = adapter  // spinner2'ye de aynı adapter'ı atama
         }
 
-        // Farklı bir dropdown görünümü kullanmak için başka bir ArrayAdapter oluşturup planets_array'i spinner2'ye atama
+        //adapter for the "week_days"
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.week_days,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner1.adapter = adapter
+        }
+
+
+
+        // DropDown menu for the "from" and "to" cities
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, cities)
-        binding.planetsSpinnerAutoComplete.setAdapter(adapter)
+        binding.planetsSpinnerAutoCompleteFrom.setAdapter(adapter)
+        binding.planetsSpinnerAutoCompleteTo.setAdapter(adapter)
 
-        binding.planetsSpinnerAutoComplete.setOnItemClickListener { parent, _, position, _ ->
+        // Item click listener for "from" AutoCompleteTextView
+        binding.planetsSpinnerAutoCompleteFrom.setOnItemClickListener { parent, _, position, _ ->
             val selectedCity = parent.getItemAtPosition(position).toString()
-            // Seçilen şehirle ilgili işlemleri burada yapabilirsiniz.
+            // Seçilen şehirle ilgili işlemleri burada yapılacak...
         }
 
-        // AutoCompleteTextView'ye tıklanıldığında klavye açılmasını sağlamak için
-        binding.planetsSpinnerAutoComplete.setOnClickListener {
-            binding.planetsSpinnerAutoComplete.showDropDown()
+        // Show dropdown when "from" AutoCompleteTextView is clicked
+        binding.planetsSpinnerAutoCompleteFrom.setOnClickListener {
+            binding.planetsSpinnerAutoCompleteFrom.showDropDown()
         }
 
+        // Item click listener for "to" AutoCompleteTextView
+        binding.planetsSpinnerAutoCompleteTo.setOnItemClickListener { parent, _, position, _ ->
+            val selectedCity = parent.getItemAtPosition(position).toString()
+            // Seçilen şehirle ilgili işlemleri burada yapılacak...
+        }
+
+        // Show dropdown when "to" AutoCompleteTextView is clicked
+        binding.planetsSpinnerAutoCompleteTo.setOnClickListener {
+            binding.planetsSpinnerAutoCompleteTo.showDropDown()
+        }
 
 
 
