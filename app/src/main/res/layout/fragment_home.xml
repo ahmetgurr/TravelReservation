@@ -16,7 +16,8 @@
         app:cardCornerRadius="30dp"
         app:cardMaxElevation="5dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        >
 
 
         <LinearLayout
@@ -30,9 +31,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="2"
+                >
 
                 <TextView
                     android:id="@+id/trip_name_id"
@@ -41,7 +43,8 @@
                     android:layout_weight="2"
                     android:text="Location"
                     android:textSize="8pt"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginStart="12dp"/>
 
                 <Button
                     android:id="@+id/pop_menu_id"
