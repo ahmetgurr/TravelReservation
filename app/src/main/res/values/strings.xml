@@ -16,4 +16,17 @@
     <string name="adults_prompt">Select Adults</string>
     <string name="children_prompt">Select Children</string>
     <string name="infants_prompt">Select Infants</string>
+
+
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
 </resources>

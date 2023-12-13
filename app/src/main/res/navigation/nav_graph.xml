@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_travelListFragment"
             app:destination="@id/travelListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_dropdown"
+            app:destination="@id/dropdown" />
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
@@ -29,4 +32,8 @@
         android:name="com.example.travelreservation.ui.fragment.TravelListFragment"
         android:label="fragment_travel_list"
         tools:layout="@layout/fragment_travel_list" />
+    <fragment
+        android:id="@+id/dropdown"
+        android:name="Dropdown"
+        android:label="Dropdown" />
 </navigation>
