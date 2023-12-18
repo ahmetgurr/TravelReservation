@@ -21,14 +21,4 @@ class RetrofitClient(private val context: Context) {
         }
     }
  */
-
-    val job = SupervisorJob()
-    val scope = CoroutineScope(Dispatchers.Main + job)
-
-    val amadeus = Amadeus.Builder(context)
-        .setClientId("9mFA97Zrv3QLptK2xvAoZ1cAAYG9k5lx")
-        .setClientSecret("qtCpFITduopHHFme")
-        .build()
-
-
 }

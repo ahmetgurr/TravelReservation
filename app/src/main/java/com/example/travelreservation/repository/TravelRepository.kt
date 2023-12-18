@@ -1,11 +1,20 @@
-package com.example.travelreservation.repository
-
+import com.example.travelreservation.model.Travel
 import com.example.travelreservation.service.TravelDao
 
-//DAO=Data Access Object
-//DAO'ya erişim sağlayan sınıf
-class TravelRepository(var tdao : TravelDao) {
+class TravelRepository(private val travelDao: TravelDao) {
 
-    //seyahatleri çekmekxx
-    //suspend fun getTravel() = tdao.travel()
+    suspend fun getTravelData(): List<Travel>? {
+        return try {
+            val response = travelDao.getData()
+            if (response.isSuccessful) {
+                response.body()
+            } else {
+                // Hata durumu
+                null
+            }
+        } catch (e: Exception) {
+            // Network hatası veya diğer istisnalar
+            null
+        }
+    }
 }

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_dropdown"
             app:destination="@id/dropdown" />
+        <action
+            android:id="@+id/action_homeFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
@@ -26,7 +29,11 @@
         android:id="@+id/travelsFragment"
         android:name="com.example.travelreservation.ui.fragment.TravelsFragment"
         android:label="fragment_travels"
-        tools:layout="@layout/fragment_travels" />
+        tools:layout="@layout/fragment_travels" >
+        <action
+            android:id="@+id/action_travelsFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
+    </fragment>
     <fragment
         android:id="@+id/travelListFragment"
         android:name="com.example.travelreservation.ui.fragment.TravelListFragment"
@@ -36,4 +43,8 @@
         android:id="@+id/dropdown"
         android:name="Dropdown"
         android:label="Dropdown" />
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.example.travelreservation.ui.MapsActivity"
+        android:label="MapsActivity" />
 </navigation>

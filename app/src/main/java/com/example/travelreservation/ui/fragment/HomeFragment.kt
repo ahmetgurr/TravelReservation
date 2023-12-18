@@ -65,6 +65,13 @@ class HomeFragment : Fragment() {
             Toast.makeText(context, "Deneme Sayfası", Toast.LENGTH_SHORT).show()
         }
 
+        binding.denemeMaps.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToMapsActivity()
+            Navigation.findNavController(it).navigate(action)
+            Toast.makeText(context, "Haritalar", Toast.LENGTH_SHORT).show()
+        }
+
+
         //using spinner menu
         val spinner = binding.spinnerHours
         val spinner1 = binding.spinnerDate
