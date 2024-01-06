@@ -22,7 +22,8 @@ data class Travel(
     @SerializedName("hours")
     var hours: String? = null,
     @SerializedName("price")
-    var price: String? = null
+    var price: String? = null,
+
 )
 {
 }

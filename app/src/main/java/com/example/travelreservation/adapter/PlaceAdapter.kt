@@ -3,6 +3,7 @@ package com.example.travelreservation.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelreservation.databinding.RecyclerRowBinding
 import com.example.travelreservation.model.Place
@@ -32,4 +33,5 @@ class PlaceAdapter(var placeList: List<Place>) : RecyclerView.Adapter<PlaceAdapt
     class PlaceHolder(val recyclerRowBinding: RecyclerRowBinding) : RecyclerView.ViewHolder(recyclerRowBinding.root) {
 
     }
+    
 }

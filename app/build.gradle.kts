@@ -100,6 +100,5 @@ dependencies {
     implementation ("androidx.room:room-rxjava3:2.6.1")
     implementation ("io.reactivex.rxjava3:rxandroid:3.0.0")
 
-
-
+    implementation ("com.google.android.material:material:1.6.1")
 }

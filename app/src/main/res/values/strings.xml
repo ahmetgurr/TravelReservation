@@ -99,6 +99,9 @@ Travel Reservation Ekibi
     E-mail: ahhmetgur@gmail.com
     </string>
 
+    <string name="expandable_card_view_behavior">com.google.android.material.card.ExpandableCardViewBehavior</string>
+
+
 
 
 </resources>

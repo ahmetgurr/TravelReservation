@@ -64,6 +64,7 @@ class TravelsFragment : Fragment() {
 
     }
 
+
     private fun handleResponse(placeList: List<Place>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val placeAdapter = PlaceAdapter(placeList)

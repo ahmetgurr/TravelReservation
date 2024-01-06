@@ -2,7 +2,7 @@ import com.example.travelreservation.model.Travel
 import com.example.travelreservation.service.TravelDao
 
 class TravelRepository(private val travelDao: TravelDao) {
-
+/*
     suspend fun getTravelData(): List<Travel>? {
         return try {
             val response = travelDao.getData()
@@ -17,4 +17,6 @@ class TravelRepository(private val travelDao: TravelDao) {
             null
         }
     }
+ */
+
 }

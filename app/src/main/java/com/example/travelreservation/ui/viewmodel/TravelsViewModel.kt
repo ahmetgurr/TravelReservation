@@ -6,7 +6,7 @@ import com.example.travelreservation.model.Travel
 import kotlinx.coroutines.launch
 
 class TravelsViewModel(private val repository: TravelRepository) : ViewModel() {
-
+/*
     private val _travelList = MutableLiveData<List<Travel>?>()
     val travelList: MutableLiveData<List<Travel>?> get() = _travelList
 
@@ -16,4 +16,5 @@ class TravelsViewModel(private val repository: TravelRepository) : ViewModel() {
             _travelList.value = data
         }
     }
+ */
 }

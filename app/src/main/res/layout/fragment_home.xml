@@ -7,16 +7,36 @@
     android:background="@color/red_100"
     tools:context=".ui.fragment.HomeFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarHome"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorOnError"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:titleMarginStart="160dp"
+        app:title="𝐓𝐑𝐀𝐕𝐄𝐋"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.appcompat.widget.Toolbar>
+
+
     <androidx.cardview.widget.CardView
 
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
         app:cardCornerRadius="30dp"
         app:cardMaxElevation="5dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="8dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarHome"
+        tools:ignore="MissingConstraints">
 
 
         <LinearLayout
