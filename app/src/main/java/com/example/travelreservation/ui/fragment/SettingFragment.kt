@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import com.example.travelreservation.R
 import com.example.travelreservation.ui.login.LoginActivity
 import com.example.travelreservation.databinding.FragmentSettingBinding
@@ -23,11 +24,6 @@ class SettingFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db : FirebaseFirestore
     private lateinit var sharedPreferences: SharedPreferences
-
-    private lateinit var txtUsername: TextView
-    private lateinit var txtEmail: TextView
-    private lateinit var txtPhone: TextView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = FragmentSettingBinding.inflate(layoutInflater)
@@ -70,10 +66,10 @@ class SettingFragment : Fragment() {
                     }
 
                     // UI elemanlarına bilgileri ata
-                    binding.txtUsername.text =  "Username: $username"
                     binding.txtUsernamePhoto.text = "$username"
-                    binding.txtEmail.text =     "Email:         $email"
-                    binding.txtPhone.text =     "Phone:       $phone"
+                    binding.editTextNewUsername.setText(username)
+                    binding.editTextNewEmail.setText(email)
+                    binding.editTextNewPhone.setText(phone)
                 } else {
                     Log.d("SettingFragment", "No such document")
                 }
@@ -81,6 +77,29 @@ class SettingFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.w("SettingFragment", "get failed with ", exception)
             }
+    }
+
+    // onViewCreated içindeki updateInformationInFirestore fonksiyonunu güncelleyin
+    private fun updateInformationInFirestore(newUsername: String, newEmail: String, newPhone: String) {
+        val user = auth.currentUser
+        if (user != null) {
+            val userId = user.uid
+            val userData = hashMapOf(
+                "username" to newUsername,
+                "email" to newEmail,
+                "phone" to newPhone
+            )
+
+            db.collection("Users")
+                .document(userId)
+                .update(userData as Map<String, Any>)
+                .addOnSuccessListener {
+                    Log.d("SettingFragment", "Bilgiler güncellendi.")
+                }
+                .addOnFailureListener { e ->
+                    Log.w("SettingFragment", "Bilgi güncelleme başarısız.", e)
+                }
+        }
     }
 
     // onViewCreated içine ekleyin
@@ -95,11 +114,35 @@ class SettingFragment : Fragment() {
                 remove("phone")
                 apply()
             }
-
             auth.signOut()
             val intent = Intent(context, LoginActivity::class.java)
             startActivity(intent)
             activity?.finish()
+        }
+
+        binding.updateInformationButton.setOnClickListener {
+            // Update Information butonuna tıklandığında yapılacak işlemler
+            val newUsername = binding.editTextNewUsername.text.toString()
+            val newEmail = binding.editTextNewEmail.text.toString()
+            val newPhone = binding.editTextNewPhone.text.toString()
+            // Yeni bilgileri SharedPreferences'e kaydet
+            with(sharedPreferences.edit()) {
+                putString("username", newUsername)
+                putString("email", newEmail)
+                putString("phone", newPhone)
+                apply()
+            }
+
+            // Firestore'daki bilgileri güncelle
+            updateInformationInFirestore(newUsername, newEmail, newPhone)
+
+            // UI elemanlarına güncellenmiş bilgileri ata
+            binding.editTextNewUsername.setText(newUsername)
+            binding.editTextNewEmail.setText(newEmail)
+            binding.editTextNewPhone.setText(newPhone)
+
+            // Kullanıcıya güncelleme başarılı mesajını göstermek için Toast kullanabilirsiniz
+            Toast.makeText(context, "Bilgiler güncellendi.", Toast.LENGTH_LONG).show()
         }
 
         // Kullanıcı ID'sini kontrol etme
@@ -118,10 +161,13 @@ class SettingFragment : Fragment() {
                 loadUsernameFromFirestore(userId)
             } else {
                 // SharedPreferences'ten gelen bilgileri UI elemanlarına ata
-                binding.txtUsername.text =  "Username: $username"
                 binding.txtUsernamePhoto.text = "$username"
-                binding.txtEmail.text =     "Email:         $email"
-                binding.txtPhone.text =     "Phone:       $phone"
+                binding.editTextNewUsername.setText(username)
+                binding.editTextNewEmail.setText(email)
+                binding.editTextNewPhone.setText(phone)
+
+                // Firebase'den çekilen e-posta adresi editable=false yap (değiştirilemez)
+                binding.editTextNewEmail.isEnabled = false
             }
         } else {
             Log.d("SettingFragment", "User is not signed in.")
