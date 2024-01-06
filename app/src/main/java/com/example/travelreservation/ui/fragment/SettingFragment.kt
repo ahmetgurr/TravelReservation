@@ -1,6 +1,8 @@
 package com.example.travelreservation.ui.fragment
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -20,6 +22,7 @@ class SettingFragment : Fragment() {
     private lateinit var binding: FragmentSettingBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var db : FirebaseFirestore
+    private lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var txtUsername: TextView
     private lateinit var txtEmail: TextView
@@ -33,6 +36,9 @@ class SettingFragment : Fragment() {
         auth = Firebase.auth
         db = FirebaseFirestore.getInstance()
         setHasOptionsMenu(true) // Bu, Fragment'ın kendi menüsünü kullanacağını belirtir
+
+        // SharedPreferences objesini oluşturun
+        sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
     }
 
     override fun onCreateView(
@@ -43,41 +49,27 @@ class SettingFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        binding.signOutButton.setOnClickListener {
-            auth.signOut()
-            val intent = Intent(context, LoginActivity::class.java)
-            startActivity(intent)
-            activity?.finish()
-        }
-
-        // Kullanıcının UID'sini kontrol etme
-        val user = auth.currentUser
-        if (user != null) {
-            val userId = user.uid
-            Log.d("SettingFragment", "Current User ID: $userId")
-
-            // Firestore'dan kullanıcı adını çekme
-            loadUsernameFromFirestore(userId)
-        } else {
-            // Kullanıcı oturum açmamışsa, başka bir işlem yapabilirsiniz.
-            Log.d("SettingFragment", "User is not signed in.")
-        }
-    }
-
+    // onViewCreated içindeki loadUsernameFromFirestore fonksiyonunu güncelleyin
     private fun loadUsernameFromFirestore(userId: String) {
         db.collection("Users")
             .document(userId)
             .get()
             .addOnSuccessListener { document ->
                 if (document != null && document.exists()) {
-                    // Firestore'dan kullanıcı adını al ve UI elemanına ata
                     val username = document.getString("username")
                     val email = document.getString("email")
                     val phone = document.getString("phone")
 
+                    // SharedPreferences'e bilgileri kaydet
+                    with(sharedPreferences.edit()) {
+                        putString("username", username)
+                        putString("email", email)
+                        putString("phone", phone)
+                        apply()
+                    }
+
+                    // UI elemanlarına bilgileri ata
                     binding.txtUsername.text =  "Username: $username"
                     binding.txtUsernamePhoto.text = "$username"
                     binding.txtEmail.text =     "Email:         $email"
@@ -91,25 +83,69 @@ class SettingFragment : Fragment() {
             }
     }
 
-    /*
-        override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-            inflater.inflate(R.menu.nav_menu, menu)
-        }
+    // onViewCreated içine ekleyin
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        override fun onOptionsItemSelected(item: MenuItem): Boolean {
-            when (item.itemId) {
-                R.id.settingFragment -> {
-                    auth.signOut()
-                    val intent = Intent(context, MainActivity::class.java)
-                    startActivity(intent)
-                    // Menü öğesi 1 seçildiğinde yapılacak işlemler
-                    return true
-                }
-                else -> return super.onOptionsItemSelected(item)
+        binding.signOutButton.setOnClickListener {
+            // Kullanıcı oturumunu kapatırken SharedPreferences'ten bilgileri temizle
+            with(sharedPreferences.edit()) {
+                remove("username")
+                remove("email")
+                remove("phone")
+                apply()
             }
+
+            auth.signOut()
+            val intent = Intent(context, LoginActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
         }
 
-     */
+        // Kullanıcı ID'sini kontrol etme
+        val user = auth.currentUser
+        if (user != null) {
+            val userId = user.uid
+            Log.d("SettingFragment", "Current User ID: $userId")
 
+            // SharedPreferences'ten bilgileri al
+            val username = sharedPreferences.getString("username", "")
+            val email = sharedPreferences.getString("email", "")
+            val phone = sharedPreferences.getString("phone", "")
 
+            // SharedPreferences'te bilgi yoksa Firestore'dan çek
+            if (username.isNullOrBlank() || email.isNullOrBlank() || phone.isNullOrBlank()) {
+                loadUsernameFromFirestore(userId)
+            } else {
+                // SharedPreferences'ten gelen bilgileri UI elemanlarına ata
+                binding.txtUsername.text =  "Username: $username"
+                binding.txtUsernamePhoto.text = "$username"
+                binding.txtEmail.text =     "Email:         $email"
+                binding.txtPhone.text =     "Phone:       $phone"
+            }
+        } else {
+            Log.d("SettingFragment", "User is not signed in.")
+        }
+    }
 }
+
+/*
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.nav_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.settingFragment -> {
+                auth.signOut()
+                val intent = Intent(context, MainActivity::class.java)
+                startActivity(intent)
+                // Menü öğesi 1 seçildiğinde yapılacak işlemler
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+ */
+
