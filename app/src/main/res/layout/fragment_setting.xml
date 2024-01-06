@@ -47,6 +47,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutUsername"
         android:layout_width="0dp"
@@ -108,14 +109,55 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/aboutUsTextView"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:text="About Us"
+        app:icon="@drawable/baseline_question_mark_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPhone" />
+
+    <Button
+        android:id="@+id/kvkkTextView"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
+        android:text="KVKK Information"
+        app:icon="@drawable/baseline_warning_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutUsTextView" />
+
+    <Button
+        android:id="@+id/contactUsTextView"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
+        android:text="Contact Us"
+        app:icon="@drawable/baseline_local_phone_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kvkkTextView" />
+
+
+    <Button
         android:id="@+id/updateInformationButton"
-        android:layout_width="390dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Update Information"
         app:layout_constraintBottom_toTopOf="@+id/signOutButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
     <Button
         android:id="@+id/signOutButton"
         android:layout_width="match_parent"
@@ -127,6 +169,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

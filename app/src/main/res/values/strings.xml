@@ -65,4 +65,40 @@
     </string-array>
     <string name="title_activity_maps">MapsActivity</string>
 
+    <string name="kvkk_text">Sayın kullanıcı,
+
+Bu uygulama, kişisel verilerinizin gizliliği konusuna büyük önem vermekte olup, KVKK (Kişisel Verilerin Korunması Kanunu) hükümlerine tam uyum sağlamaktadır. Aşağıda, kişisel verilerinizin nasıl işlendiği ve korunduğu ile ilgili bilgileri bulabilirsiniz.
+
+1. Kişisel Verilerin Toplanması ve İşlenmesi:
+   - Uygulamamız, seyahatlerinizi ve yer paylaşımlarınızı yönetmek için gerekli olan bazı kişisel verilerinizi toplayabilir ve işleyebilir.
+   - Toplanan kişisel verileriniz, sadece belirli amaçlar doğrultusunda kullanılacaktır.
+
+2. Kişisel Verilerin Korunması:
+   - Uygulamamız, kişisel verilerinizi güvenli bir şekilde saklamak ve korumak için gerekli teknik ve organizasyonel önlemleri almaktadır.
+   - Veri güvenliği, şifreleme teknolojileri ve diğer güvenlik önlemleri ile sağlanmaktadır.
+
+3. Kişisel Verilerin Paylaşılması:
+   - Kişisel verileriniz, yasal düzenlemelere uygun olarak, belirli durumlarda yetkili mercilerle paylaşılabilecektir.
+   - Verileriniz, üçüncü taraflarla paylaşılmadan önce açık rıza talep edilecektir.
+
+4. Kişisel Verilere Erişim ve Kontrol:
+   - Uygulama üzerinden kişisel verilerinize erişim sağlama ve bu verileri düzenleme imkanınız bulunmaktadır.
+   - Ayrıca, veri kullanım izinlerinizi uygulama ayarlarından kontrol edebilirsiniz.
+
+5. Çerezler ve Takip Teknolojileri:
+   - Uygulamamız, çerezler ve benzeri takip teknolojilerini kullanabilir. Bu konuda daha fazla bilgi için çerez politikamızı inceleyebilirsiniz.
+
+KVKK metni hakkında daha fazla bilgi almak için lütfen uygulama içindeki "KVKK" bölümünü ziyaret ediniz. Sorularınız için [destek@travelreservation.com](mailto:destek@travelreservation.com) adresine e-posta gönderebilirsiniz.
+
+Saygılarımla,
+Travel Reservation Ekibi
+</string>
+    <string name="about_us_text">This application will inform you between cities and you can use it for your reservations.</string>
+    <string name="contact_us_text">You can contact us via e-mail or phone number.
+    Phone Number: 0532 123 ** **
+    E-mail: ahhmetgur@gmail.com
+    </string>
+
+
+
 </resources>

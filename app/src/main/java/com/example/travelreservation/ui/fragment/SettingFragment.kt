@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.travelreservation.R
 import com.example.travelreservation.ui.login.LoginActivity
 import com.example.travelreservation.databinding.FragmentSettingBinding
@@ -45,6 +47,93 @@ class SettingFragment : Fragment() {
         return binding.root
     }
 
+
+
+    // onViewCreated içine ekleyin
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.signOutButton.setOnClickListener {
+            // Kullanıcı oturumunu kapatırken SharedPreferences'ten bilgileri temizle
+            with(sharedPreferences.edit()) {
+                remove("username")
+                remove("email")
+                remove("phone")
+                apply()
+            }
+            auth.signOut()
+            val intent = Intent(context, LoginActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
+
+        binding.updateInformationButton.setOnClickListener {
+            // Update Information butonuna tıklandığında yapılacak işlemler
+            val newUsername = binding.editTextNewUsername.text.toString()
+            val newEmail = binding.editTextNewEmail.text.toString()
+            val newPhone = binding.editTextNewPhone.text.toString()
+            // Yeni bilgileri SharedPreferences'e kaydet
+            with(sharedPreferences.edit()) {
+                putString("username", newUsername)
+                putString("email", newEmail)
+                putString("phone", newPhone)
+                apply()
+            }
+
+            // Firestore'daki bilgileri güncelle
+            updateInformationInFirestore(newUsername, newEmail, newPhone)
+
+            // UI elemanlarına güncellenmiş bilgileri ata
+            binding.editTextNewUsername.setText(newUsername)
+            binding.editTextNewEmail.setText(newEmail)
+            binding.editTextNewPhone.setText(newPhone)
+
+            // Kullanıcıya güncelleme başarılı mesajını göstermek için Toast kullanabilirsiniz
+            Toast.makeText(context, "Bilgiler güncellendi.", Toast.LENGTH_LONG).show()
+        }
+
+        // KVKK TextView'ına tıklandığında
+        binding.kvkkTextView.setOnClickListener {
+            showCustomDialog(getString(R.string.kvkk_text))
+        }
+        // About Us TextView'ına tıklandığında
+        binding.aboutUsTextView.setOnClickListener {
+            showCustomDialog(getString(R.string.about_us_text))
+        }
+        // About Us TextView'ına tıklandığında
+        binding.contactUsTextView.setOnClickListener {
+            showCustomDialog(getString(R.string.contact_us_text))
+        }
+
+
+        // Kullanıcı ID'sini kontrol etme
+        val user = auth.currentUser
+        if (user != null) {
+            val userId = user.uid
+            Log.d("SettingFragment", "Current User ID: $userId")
+
+            // SharedPreferences'ten bilgileri al
+            val username = sharedPreferences.getString("username", "")
+            val email = sharedPreferences.getString("email", "")
+            val phone = sharedPreferences.getString("phone", "")
+
+            // SharedPreferences'te bilgi yoksa Firestore'dan çek
+            if (username.isNullOrBlank() || email.isNullOrBlank() || phone.isNullOrBlank()) {
+                loadUsernameFromFirestore(userId)
+            } else {
+                // SharedPreferences'ten gelen bilgileri UI elemanlarına ata
+                binding.txtUsernamePhoto.text = "$username"
+                binding.editTextNewUsername.setText(username)
+                binding.editTextNewEmail.setText(email)
+                binding.editTextNewPhone.setText(phone)
+
+                // Firebase'den çekilen e-posta adresi editable=false yap (değiştirilemez)
+                binding.editTextNewEmail.isEnabled = false
+            }
+        } else {
+            Log.d("SettingFragment", "User is not signed in.")
+        }
+    }
 
     // onViewCreated içindeki loadUsernameFromFirestore fonksiyonunu güncelleyin
     private fun loadUsernameFromFirestore(userId: String) {
@@ -102,77 +191,25 @@ class SettingFragment : Fragment() {
         }
     }
 
-    // onViewCreated içine ekleyin
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun showCustomDialog(content: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        val inflater = requireActivity().layoutInflater
+        val dialogView = inflater.inflate(R.layout.custom_about_us_dialog, null)
+        builder.setView(dialogView)
 
-        binding.signOutButton.setOnClickListener {
-            // Kullanıcı oturumunu kapatırken SharedPreferences'ten bilgileri temizle
-            with(sharedPreferences.edit()) {
-                remove("username")
-                remove("email")
-                remove("phone")
-                apply()
-            }
-            auth.signOut()
-            val intent = Intent(context, LoginActivity::class.java)
-            startActivity(intent)
-            activity?.finish()
+        val contentTextView: TextView = dialogView.findViewById(R.id.contentTextView)
+        contentTextView.text = content
+
+        val okButton: Button = dialogView.findViewById(R.id.okButton)
+        val dialog = builder.create()
+
+        okButton.setOnClickListener {
+            dialog.dismiss()
         }
 
-        binding.updateInformationButton.setOnClickListener {
-            // Update Information butonuna tıklandığında yapılacak işlemler
-            val newUsername = binding.editTextNewUsername.text.toString()
-            val newEmail = binding.editTextNewEmail.text.toString()
-            val newPhone = binding.editTextNewPhone.text.toString()
-            // Yeni bilgileri SharedPreferences'e kaydet
-            with(sharedPreferences.edit()) {
-                putString("username", newUsername)
-                putString("email", newEmail)
-                putString("phone", newPhone)
-                apply()
-            }
-
-            // Firestore'daki bilgileri güncelle
-            updateInformationInFirestore(newUsername, newEmail, newPhone)
-
-            // UI elemanlarına güncellenmiş bilgileri ata
-            binding.editTextNewUsername.setText(newUsername)
-            binding.editTextNewEmail.setText(newEmail)
-            binding.editTextNewPhone.setText(newPhone)
-
-            // Kullanıcıya güncelleme başarılı mesajını göstermek için Toast kullanabilirsiniz
-            Toast.makeText(context, "Bilgiler güncellendi.", Toast.LENGTH_LONG).show()
-        }
-
-        // Kullanıcı ID'sini kontrol etme
-        val user = auth.currentUser
-        if (user != null) {
-            val userId = user.uid
-            Log.d("SettingFragment", "Current User ID: $userId")
-
-            // SharedPreferences'ten bilgileri al
-            val username = sharedPreferences.getString("username", "")
-            val email = sharedPreferences.getString("email", "")
-            val phone = sharedPreferences.getString("phone", "")
-
-            // SharedPreferences'te bilgi yoksa Firestore'dan çek
-            if (username.isNullOrBlank() || email.isNullOrBlank() || phone.isNullOrBlank()) {
-                loadUsernameFromFirestore(userId)
-            } else {
-                // SharedPreferences'ten gelen bilgileri UI elemanlarına ata
-                binding.txtUsernamePhoto.text = "$username"
-                binding.editTextNewUsername.setText(username)
-                binding.editTextNewEmail.setText(email)
-                binding.editTextNewPhone.setText(phone)
-
-                // Firebase'den çekilen e-posta adresi editable=false yap (değiştirilemez)
-                binding.editTextNewEmail.isEnabled = false
-            }
-        } else {
-            Log.d("SettingFragment", "User is not signed in.")
-        }
+        dialog.show()
     }
+
 }
 
 /*
