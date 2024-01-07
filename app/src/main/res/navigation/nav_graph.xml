@@ -38,7 +38,19 @@
         android:id="@+id/travelListFragment"
         android:name="com.example.travelreservation.ui.fragment.TravelListFragment"
         android:label="fragment_travel_list"
-        tools:layout="@layout/fragment_travel_list" />
+        tools:layout="@layout/fragment_travel_list">
+
+        <argument
+            android:name="selectedCityFrom"
+            app:argType="string" />
+
+        <argument
+            android:name="selectedCityTo"
+            app:argType="string" />
+
+    </fragment>
+
+
     <fragment
         android:id="@+id/dropdown"
         android:name="Dropdown"

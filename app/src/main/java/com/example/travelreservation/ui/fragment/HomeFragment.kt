@@ -22,11 +22,8 @@ import com.example.travelreservation.ui.viewmodel.HomeFragmentViewModel
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var viewModel: HomeFragmentViewModel
-    private lateinit var travelRecyclerAdapter: TravelRecyclerAdapter
 
     private val cities = arrayOf("Malatya", "İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Adana", "Eskişehir", "Trabzon")
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +31,6 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,17 +44,30 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.bind(view)
 
+        // Search Fligt Button
+        binding.btnSearchFlight.setOnClickListener {
+            // Get selected cities from AutoCompleteTextViews
+            val selectedCityFrom = binding.planetsSpinnerAutoCompleteFrom.text.toString()
+            val selectedCityTo = binding.planetsSpinnerAutoCompleteTo.text.toString()
+
+            // Create an action with selected cities
+            val action = HomeFragmentDirections.actionHomeFragmentToTravelListFragment(
+                selectedCityFrom,
+                selectedCityTo
+            )
+            // Navigate with the action
+            Navigation.findNavController(it).navigate(action)
+
+            Toast.makeText(context, "Ticket List", Toast.LENGTH_SHORT).show()
+        }
+        //*******************
+
         binding.gecis.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToTravelListFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToTravelListFragment(selectedCityFrom = "İstanbul", selectedCityTo = "Ankara")
             Navigation.findNavController(it).navigate(action)
             Toast.makeText(context, "Ticket List", Toast.LENGTH_SHORT).show()
         }
 
-        binding.btnSearchFlight.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToTravelListFragment()
-            Navigation.findNavController(it).navigate(action)
-            Toast.makeText(context, "Ticket List", Toast.LENGTH_SHORT).show()
-        }
         binding.deneme1.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToDropdown()
             Navigation.findNavController(it).navigate(action)
@@ -97,8 +106,6 @@ class HomeFragment : Fragment() {
             spinner1.adapter = adapter
         }
 
-
-
         // DropDown menu for the "from" and "to" cities
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, cities)
         binding.planetsSpinnerAutoCompleteFrom.setAdapter(adapter)
@@ -125,8 +132,6 @@ class HomeFragment : Fragment() {
         binding.planetsSpinnerAutoCompleteTo.setOnClickListener {
             binding.planetsSpinnerAutoCompleteTo.showDropDown()
         }
-
-
 
     }
 }

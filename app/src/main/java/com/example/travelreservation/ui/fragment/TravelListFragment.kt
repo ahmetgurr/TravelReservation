@@ -53,16 +53,19 @@ class TravelListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loadData()
+        val selectedCityFrom = arguments?.getString("selectedCityFrom")
+        val selectedCityTo = arguments?.getString("selectedCityTo")
+
+        loadData(selectedCityFrom, selectedCityTo)
 
         compositeDisposable = CompositeDisposable()
 
-        val layoutManager : RecyclerView.LayoutManager = LinearLayoutManager(context)
+        val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
         binding.recyclerView.layoutManager = layoutManager
 
     }
 
-    private fun loadData() {
+    private fun loadData(selectedCityFrom: String?, selectedCityTo: String?) {
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -70,30 +73,39 @@ class TravelListFragment : Fragment() {
             .build()
             .create(TravelDao::class.java)
 
-        val exceptionHandler = CoroutineExceptionHandler { context, throwable ->
-            // İstisnayı burada ele alın
+        val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+            // Handle the exception here
             Log.e("TravelListFragment", "Error fetching travel data:", throwable)
         }
 
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val response = retrofit.getData()
+            val response = retrofit.getData(cityFrom = null, cityTo = null)
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    response.body()?.let {
-                        travelModel = ArrayList(it)
-                        travelModel?.let {
-                            recyclerViewAdapter = TravelRecyclerAdapter(it, this@TravelListFragment)
-                            binding.recyclerView.adapter = recyclerViewAdapter
+                    response.body()?.let { travelList ->
+                        // If both selectedCityFrom and selectedCityTo are provided, filter the list
+                        val filteredList = if (selectedCityFrom != null && selectedCityTo != null) {
+                            travelList.filter { travel ->
+                                travel.cityFrom == selectedCityFrom && travel.cityTo == selectedCityTo
+                            }
+                        } else {
+                            // If any of them is null, use the original list
+                            travelList
                         }
+
+                        recyclerViewAdapter = TravelRecyclerAdapter(ArrayList(filteredList), this@TravelListFragment)
+                        binding.recyclerView.adapter = recyclerViewAdapter
                     }
                 } else {
-                    // Hata yanıtını ele alın
+                    // Handle the error response
                     Toast.makeText(activity, "Error fetching travel data", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
+
+
 
     fun onItemClick(travelModel: Travel) {
         Toast.makeText(activity,"Clicked: ${travelModel.cityFrom} - ${travelModel.cityTo}",Toast.LENGTH_SHORT).show()

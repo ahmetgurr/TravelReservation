@@ -5,6 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 import retrofit2.Call
+import retrofit2.http.Query
 
 
 //[ Base URL: test.api.amadeus.com/v2 ]
@@ -21,8 +22,9 @@ import retrofit2.Call
 
 
 interface TravelDao {
-
     @GET("ahmetgurr/JSONDataSet/main/travell.json")
-    suspend fun getData(): Response<List<Travel>>
-
+    suspend fun getData(
+        @Query("cityFrom") cityFrom: String?,
+        @Query("cityTo") cityTo: String?
+    ): Response<List<Travel>>
 }
