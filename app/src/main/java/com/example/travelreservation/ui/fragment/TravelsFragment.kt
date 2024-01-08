@@ -61,9 +61,7 @@ class TravelsFragment : Fragment() {
         binding.fab.setOnClickListener{
             Navigation.nextPage(R.id.action_travelsFragment_to_mapsActivity,it)
         }
-
     }
-
 
     private fun handleResponse(placeList: List<Place>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())

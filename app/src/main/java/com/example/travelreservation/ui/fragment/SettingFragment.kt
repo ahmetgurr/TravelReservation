@@ -189,7 +189,7 @@ class SettingFragment : Fragment() {
     private fun showCustomDialog(content: String) {
         val builder = AlertDialog.Builder(requireContext())
         val inflater = requireActivity().layoutInflater
-        val dialogView = inflater.inflate(R.layout.custom_about_us_dialog, null)
+        val dialogView = inflater.inflate(R.layout.alert_dialog, null)
         builder.setView(dialogView)
 
         val contentTextView: TextView = dialogView.findViewById(R.id.contentTextView)

@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-
+}
 
 /*
     fun signInClicked(view: View) {
@@ -106,5 +106,3 @@ class LoginActivity : AppCompatActivity() {
 
 
  */
-
-}

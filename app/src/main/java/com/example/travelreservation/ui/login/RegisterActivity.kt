@@ -84,6 +84,8 @@ class RegisterActivity : AppCompatActivity() {
                 }
         }
     }
+}
+
 /*
 // binding yerine onClick methodu kullanılırsa aşağıdaki işlmeleri kullan.
     fun signUpClicked(view: View) {
@@ -114,5 +116,3 @@ class RegisterActivity : AppCompatActivity() {
     }
  */
 
-
-}

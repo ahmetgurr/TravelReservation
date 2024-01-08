@@ -30,11 +30,9 @@ class TravelListFragment : Fragment() {
 
     //https://raw.githubusercontent.com/ahmetgurr/JSONDataSet/main/travell.json
     private val BASE_URL = "https://raw.githubusercontent.com/"
-    private var travelModel: ArrayList<Travel>? = null
     private var recyclerViewAdapter: TravelRecyclerAdapter? = null
     private var job : Job? = null
     private var compositeDisposable : CompositeDisposable? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +62,7 @@ class TravelListFragment : Fragment() {
         binding.recyclerView.layoutManager = layoutManager
 
     }
-
+    //cityFrom ve cityTo ile verileri yükleyen loadData() fonksiyonu
     private fun loadData(selectedCityFrom: String?, selectedCityTo: String?) {
 
         val retrofit = Retrofit.Builder()
@@ -105,13 +103,9 @@ class TravelListFragment : Fragment() {
         }
     }
 
-
-
+    //cardview'a tıklandığında çalışan onItemClick() fonksiyonu
     fun onItemClick(travelModel: Travel) {
         Toast.makeText(activity,"Clicked: ${travelModel.cityFrom} - ${travelModel.cityTo}",Toast.LENGTH_SHORT).show()
     }
-
-
-
 
 }
