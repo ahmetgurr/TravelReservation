@@ -18,5 +18,4 @@ class Place(
 
     @PrimaryKey(autoGenerate = true)
     var id = 0
-
 }

@@ -47,14 +47,11 @@ class SettingFragment : Fragment() {
         return binding.root
     }
 
-
-
-    // onViewCreated içine ekleyin
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.signOutButton.setOnClickListener {
-            // Kullanıcı oturumunu kapatırken SharedPreferences'ten bilgileri temizle
+            // Kullanıcı oturumunu kapatırken SharedPreferences'ten bilgileri temizlenir
             with(sharedPreferences.edit()) {
                 remove("username")
                 remove("email")
@@ -66,7 +63,7 @@ class SettingFragment : Fragment() {
             startActivity(intent)
             activity?.finish()
         }
-
+        // Bilgileri güncelle butonuna tıklandığında
         binding.updateInformationButton.setOnClickListener {
             // Update Information butonuna tıklandığında yapılacak işlemler
             val newUsername = binding.editTextNewUsername.text.toString()
@@ -91,7 +88,6 @@ class SettingFragment : Fragment() {
             // Kullanıcıya güncelleme başarılı mesajını göstermek için Toast kullanabilirsiniz
             Toast.makeText(context, "Bilgiler güncellendi.", Toast.LENGTH_LONG).show()
         }
-
         // KVKK TextView'ına tıklandığında
         binding.kvkkTextView.setOnClickListener {
             showCustomDialog(getString(R.string.kvkk_text))
@@ -104,7 +100,6 @@ class SettingFragment : Fragment() {
         binding.contactUsTextView.setOnClickListener {
             showCustomDialog(getString(R.string.contact_us_text))
         }
-
 
         // Kullanıcı ID'sini kontrol etme
         val user = auth.currentUser
@@ -135,7 +130,7 @@ class SettingFragment : Fragment() {
         }
     }
 
-    // onViewCreated içindeki loadUsernameFromFirestore fonksiyonunu güncelleyin
+    // onViewCreated içindeki loadUsernameFromFirestore'u çağırıyoruz
     private fun loadUsernameFromFirestore(userId: String) {
         db.collection("Users")
             .document(userId)
@@ -168,7 +163,7 @@ class SettingFragment : Fragment() {
             }
     }
 
-    // onViewCreated içindeki updateInformationInFirestore fonksiyonunu güncelleyin
+    // onViewCreated içindeki updateInformationInFirestore'u çağırıyoruz
     private fun updateInformationInFirestore(newUsername: String, newEmail: String, newPhone: String) {
         val user = auth.currentUser
         if (user != null) {

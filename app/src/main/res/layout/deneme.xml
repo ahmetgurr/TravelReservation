@@ -1,8 +1,29 @@
-<!-- fragment_dropdown_auto_complete.xml -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <GridLayout
+        android:id="@+id/busLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- Otobüs koltukları burada dinamik olarak eklenecek -->
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/genderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/busLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Cinsiyet Seçimi"
+        android:textSize="16sp" />
+
+</RelativeLayout>

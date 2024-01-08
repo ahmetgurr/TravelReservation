@@ -3,8 +3,6 @@ package com.example.travelreservation.service
 import com.example.travelreservation.model.Travel
 import retrofit2.Response
 import retrofit2.http.GET
-
-import retrofit2.Call
 import retrofit2.http.Query
 
 

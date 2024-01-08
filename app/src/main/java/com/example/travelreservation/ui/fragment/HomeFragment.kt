@@ -1,41 +1,31 @@
 package com.example.travelreservation.ui.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.example.travelreservation.R
-import com.example.travelreservation.adapter.TravelRecyclerAdapter
 import com.example.travelreservation.databinding.FragmentHomeBinding
-import com.example.travelreservation.databinding.FragmentSettingBinding
-import com.example.travelreservation.ui.login.LoginActivity
-import com.example.travelreservation.ui.viewmodel.HomeFragmentViewModel
 
 class HomeFragment : Fragment() {
-
     private lateinit var binding: FragmentHomeBinding
-
-    private val cities = arrayOf("Malatya", "İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Adana", "Eskişehir", "Trabzon")
-
+    private lateinit var cities: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        cities = resources.getStringArray(R.array.cities_array)
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -44,7 +34,7 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.bind(view)
 
-        // Search Fligt Button
+        //Search Fligt Button
         binding.btnSearchFlight.setOnClickListener {
             // Get selected cities from AutoCompleteTextViews
             val selectedCityFrom = binding.planetsSpinnerAutoCompleteFrom.text.toString()
@@ -60,31 +50,26 @@ class HomeFragment : Fragment() {
 
             Toast.makeText(context, "Ticket List", Toast.LENGTH_SHORT).show()
         }
-        //*******************
 
-        binding.gecis.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToTravelListFragment(selectedCityFrom = "İstanbul", selectedCityTo = "Ankara")
-            Navigation.findNavController(it).navigate(action)
-            Toast.makeText(context, "Ticket List", Toast.LENGTH_SHORT).show()
-        }
-
-        binding.deneme1.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToDropdown()
-            Navigation.findNavController(it).navigate(action)
-            Toast.makeText(context, "Deneme Sayfası", Toast.LENGTH_SHORT).show()
-        }
-
+        //Maps Button
         binding.denemeMaps.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToMapsActivity()
             Navigation.findNavController(it).navigate(action)
             Toast.makeText(context, "Haritalar", Toast.LENGTH_SHORT).show()
         }
 
+        //For the try Button
+        binding.deneme1.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToDropdown()
+            Navigation.findNavController(it).navigate(action)
+            Toast.makeText(context, "Deneme Sayfası", Toast.LENGTH_SHORT).show()
+        }
+
+
 
         //using spinner menu
         val spinner = binding.spinnerHours
         val spinner1 = binding.spinnerDate
-        //val spinner2 = binding.planetsSpinnerAutoComplete
 
         //adapter for the "hours_days"
         ArrayAdapter.createFromResource(

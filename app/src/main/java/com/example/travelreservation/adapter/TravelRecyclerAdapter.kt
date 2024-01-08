@@ -1,10 +1,8 @@
 package com.example.travelreservation.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.travelreservation.R
 import com.example.travelreservation.databinding.RowLayoutBinding
 import com.example.travelreservation.model.Travel
 import com.example.travelreservation.ui.fragment.TravelListFragment
