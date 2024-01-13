@@ -1,6 +1,9 @@
 package com.example.travelreservation.adapter
 
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelreservation.databinding.RowLayoutBinding
@@ -23,11 +26,25 @@ class TravelRecyclerAdapter(
         override fun onBindViewHolder(holder: RowHolder, position: Int) {
             holder.itemView.setOnClickListener {
                 listener.onItemClick(travelList.get(position))
+                //listener.showCustomDialog(travelList.toString())
             }
+
+            holder.itemView.setOnClickListener {
+                // Tıklanan öğenin durumunu kontrol et
+                if (holder.binding.expandedLayout.visibility == View.GONE) {
+                    // Genişletilecek bölüm gizliyse, görünür yap
+                    holder.binding.expandedLayout.visibility = View.VISIBLE
+                } else {
+                    // Genişletilecek bölüm görünürse, gizle
+                    holder.binding.expandedLayout.visibility = View.GONE
+                }
+            }
+
             holder.binding.textCityFrom.text = travelList.get(position).cityFrom
             holder.binding.textCityTo.text = travelList.get(position).cityTo
             holder.binding.textDistance.text = travelList.get(position).distance
             holder.binding.textHours.text = travelList.get(position).hours
             holder.binding.textPrice.text = travelList.get(position).price
         }
+
 }

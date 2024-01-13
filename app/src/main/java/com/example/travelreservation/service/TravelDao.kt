@@ -20,7 +20,7 @@ import retrofit2.http.Query
 
 
 interface TravelDao {
-    @GET("ahmetgurr/JSONDataSet/main/travell.json")
+    @GET("ahmetgurr/JSONDataSet/main/travelll.json")
     suspend fun getData(
         @Query("cityFrom") cityFrom: String?,
         @Query("cityTo") cityTo: String?

@@ -59,12 +59,11 @@ class HomeFragment : Fragment() {
         }
 
         //For the try Button
-        binding.deneme1.setOnClickListener {
+        binding.dropdownFragment.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToDropdown()
             Navigation.findNavController(it).navigate(action)
-            Toast.makeText(context, "Deneme Sayfası", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Dropdown Sayfası", Toast.LENGTH_SHORT).show()
         }
-
 
 
         //using spinner menu

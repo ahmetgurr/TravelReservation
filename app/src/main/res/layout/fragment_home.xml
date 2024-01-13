@@ -14,12 +14,11 @@
         android:background="?attr/colorOnError"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:titleMarginStart="160dp"
-        app:title="𝐓𝐑𝐀𝐕𝐄𝐋"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </androidx.appcompat.widget.Toolbar>
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="𝐓𝐑𝐀𝐕𝐄𝐋"
+        app:titleMarginStart="160dp"></androidx.appcompat.widget.Toolbar>
 
 
     <androidx.cardview.widget.CardView
@@ -235,10 +234,10 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/deneme1"
-        android:layout_width="116dp"
-        android:layout_height="43dp"
-        android:text="Deneme1"
+        android:id="@+id/dropdownFragment"
+        android:layout_width="128dp"
+        android:layout_height="56dp"
+        android:text="dropdownFragment"
         app:layout_constraintBottom_toTopOf="@+id/denemeMaps"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -13,6 +13,8 @@ data class Travel(
     var hours: String? = null,
     @SerializedName("price")
     var price: String? = null,
+    var id: Int? = null,
+    var isExpanded: Boolean = false // Default olarak false olarak ayarladık
 )
 {
 }

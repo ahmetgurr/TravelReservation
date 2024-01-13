@@ -7,6 +7,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -147,6 +148,123 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
+
+            <!-- ArrowDown -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <ImageView
+                    android:id="@+id/imageViewArrowDown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_keyboard_arrow_down_24" />
+
+                <TextView
+                    android:id="@+id/text_arrowDown"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:maxLines="1"
+                    android:text="Click to see more"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Genişleyen içerik (Gizli durumda başlangıçta)
+             android:visibility="gone"-->
+            <LinearLayout
+                android:id="@+id/expandedLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Gender / Female / Empty Seat -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="6">
+
+                    <ImageView
+                        android:id="@+id/genderMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/square_male"/>
+                    <TextView
+                        android:id="@+id/text_genderMale"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:maxLines="1"
+                        android:text="Male"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/genderFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/square_female" />
+                    <TextView
+                        android:id="@+id/text_genderFemale"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:maxLines="1"
+                        android:text="Female"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/emptySeat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_square_24" />
+                    <TextView
+                        android:id="@+id/text_eöptySeat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:maxLines="1"
+                        android:text="Empty Seat"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+            </LinearLayout>
+
+                <!-- Lütfem Koltuk seçin metin -->
+                <TextView
+                    android:id="@+id/text_chooseSeat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please choose your seat"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:textStyle="italic"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp" />
+
+                <ImageView
+                    android:id="@+id/car_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/car" />
+            </LinearLayout>
+
 
         </LinearLayout>
 

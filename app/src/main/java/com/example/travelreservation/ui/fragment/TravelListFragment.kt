@@ -1,12 +1,21 @@
 package com.example.travelreservation.ui.fragment
 
+import android.annotation.SuppressLint
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelreservation.R
@@ -105,7 +114,64 @@ class TravelListFragment : Fragment() {
 
     //cardview'a tıklandığında çalışan onItemClick() fonksiyonu
     fun onItemClick(travelModel: Travel) {
-        Toast.makeText(activity,"Clicked: ${travelModel.cityFrom} - ${travelModel.cityTo}",Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity,"Clicked: ${travelModel.cityFrom} - ${travelModel.cityTo} - ${travelModel.id}",Toast.LENGTH_SHORT).show()
     }
+
+    //Carda basınca açılan dialog
+    fun showCustomDialog(content: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        val inflater = requireActivity().layoutInflater
+        val dialogView = inflater.inflate(R.layout.alert_dialog, null)
+        builder.setView(dialogView)
+
+        val contentTextView: TextView = dialogView.findViewById(R.id.contentTextView)
+        contentTextView.text = content
+
+        val okButton: Button = dialogView.findViewById(R.id.okButton)
+        val dialog = builder.create()
+
+        okButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    @SuppressLint("MissingInflatedId")
+    private fun showCustomDialog() {
+        // Özel bir layout dosyasını kullanarak dialog oluştur
+        val dialogView = layoutInflater.inflate(R.layout.dialog_reservation, null)
+
+        // Dialog penceresini oluştur
+        var dialog_reservation = Dialog(requireContext())
+        dialog_reservation.setContentView(dialogView)
+        dialog_reservation.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // Arkaplanı saydam yapmak için
+
+        // Dialog içindeki bileşenlere erişim
+        val btnSave = dialogView.findViewById<Button>(R.id.btnSave)
+        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
+
+        // "Save" düğmesine tıklanınca
+        btnSave.setOnClickListener {
+            // İstenilen işlemleri burada gerçekleştirin
+            Toast.makeText(requireContext(), "Save success", Toast.LENGTH_SHORT).show()
+
+            // Dialog penceresini kapat
+            dialog_reservation.dismiss()
+        }
+
+        // "Cancel" düğmesine tıklanınca
+        btnCancel.setOnClickListener {
+            // İstenilen işlemleri burada gerçekleştirin
+            Toast.makeText(requireContext(), "It is cancelled", Toast.LENGTH_SHORT).show()
+
+            // Dialog penceresini kapat
+            dialog_reservation.dismiss()
+        }
+
+        // Dialog penceresini göster
+        dialog_reservation.show()
+    }
+
 
 }
