@@ -28,8 +28,21 @@ class TravelRecyclerAdapter(
                 listener.onItemClick(travelList.get(position))
                 //listener.showCustomDialog(travelList.toString())
             }
-
+/*
             holder.itemView.setOnClickListener {
+                // Tıklanan öğenin durumunu kontrol et
+                if (holder.binding.expandedLayout.visibility == View.GONE) {
+                    // Genişletilecek bölüm gizliyse, görünür yap
+                    holder.binding.expandedLayout.visibility = View.VISIBLE
+                } else {
+                    // Genişletilecek bölüm görünürse, gizle
+                    holder.binding.expandedLayout.visibility = View.GONE
+                }
+            }
+
+ */
+
+            holder.binding.linearLayoutArrowDown.setOnClickListener {
                 // Tıklanan öğenin durumunu kontrol et
                 if (holder.binding.expandedLayout.visibility == View.GONE) {
                     // Genişletilecek bölüm gizliyse, görünür yap

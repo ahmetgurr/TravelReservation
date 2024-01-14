@@ -149,41 +149,15 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- ArrowDown -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal"
-                android:weightSum="4">
 
-                <ImageView
-                    android:id="@+id/imageViewArrowDown"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/baseline_keyboard_arrow_down_24" />
 
-                <TextView
-                    android:id="@+id/text_arrowDown"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:maxLines="1"
-                    android:text="Click to see more"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <!-- Genişleyen içerik (Gizli durumda başlangıçta)
-             android:visibility="gone"-->
+            <!-- Genişleyen içerik (Gizli durumda başlangıçta)-->
             <LinearLayout
                 android:id="@+id/expandedLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <!-- Gender / Female / Empty Seat -->
                 <LinearLayout
@@ -263,8 +237,46 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/car" />
+
+                <!--Button Confirm and Continue -->
+                <Button
+                    android:id="@+id/btnConfirmAndContinue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="Confirm and Continue"/>
+
+
             </LinearLayout>
 
+
+            <!-- ArrowDown -->
+            <LinearLayout
+                android:id="@+id/linearLayoutArrowDown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:id="@+id/text_arrowDown"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:maxLines="1"
+                    android:text="Click to see more"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+                <ImageView
+                    android:id="@+id/imageViewArrowDown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_keyboard_arrow_down_24" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
