@@ -88,6 +88,7 @@ class SettingFragment : Fragment() {
             // Kullanıcıya güncelleme başarılı mesajını göstermek için Toast kullanabilirsiniz
             Toast.makeText(context, "Bilgiler güncellendi.", Toast.LENGTH_LONG).show()
         }
+
         // KVKK TextView'ına tıklandığında
         binding.kvkkTextView.setOnClickListener {
             showCustomDialog(getString(R.string.kvkk_text))

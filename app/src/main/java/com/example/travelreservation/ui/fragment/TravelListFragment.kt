@@ -2,20 +2,22 @@ package com.example.travelreservation.ui.fragment
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.transition.AutoTransition
-import android.transition.TransitionManager
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.GridLayout
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelreservation.R
@@ -70,7 +72,32 @@ class TravelListFragment : Fragment() {
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
         binding.recyclerView.layoutManager = layoutManager
 
+
     }
+
+    fun setSeatLayout(context: Context, seatCount: Int) {
+        val seatGridLayout = GridLayout(context)
+        val inflater = LayoutInflater.from(context)
+
+        for (i in 1..seatCount) {
+            val seat = inflater.inflate(R.layout.seat_item, null) as ImageView
+
+            // Burada istediğiniz özellikleri koltuklara ekleyebilirsiniz.
+            seat.setImageResource(R.drawable.baseline_airline_seat_recline_normal_24)
+            seat.setOnClickListener {
+                // Koltuğa tıklandığında yapılacak işlemler
+                // Örneğin, cinsiyet seçimi ve rengi değiştirme işlemleri burada olacak.
+            }
+
+            // GridLayout'a koltuğu ekle
+            val params = GridLayout.LayoutParams()
+            params.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            params.width = ViewGroup.LayoutParams.WRAP_CONTENT
+            seatGridLayout.addView(seat, params)
+        }
+    }
+
+
     //cityFrom ve cityTo ile verileri yükleyen loadData() fonksiyonu
     private fun loadData(selectedCityFrom: String?, selectedCityTo: String?) {
 
@@ -116,6 +143,8 @@ class TravelListFragment : Fragment() {
     fun onItemClick(travelModel: Travel) {
         Toast.makeText(activity,"Clicked: ${travelModel.cityFrom} - ${travelModel.cityTo} - ${travelModel.id}",Toast.LENGTH_SHORT).show()
     }
+
+
 
     //Carda basınca açılan dialog
     fun showCustomDialog(content: String) {

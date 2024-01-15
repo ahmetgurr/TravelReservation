@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/CardView"
         android:layout_width="match_parent"
@@ -151,13 +152,14 @@
 
 
 
-            <!-- Genişleyen içerik (Gizli durumda başlangıçta)-->
+            <!-- Genişleyen içerik (Gizli durumda başlangıçta) android:visibility="gone" -->
             <LinearLayout
                 android:id="@+id/expandedLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="vertical"
-                android:visibility="gone">
+                >
 
                 <!-- Gender / Female / Empty Seat -->
                 <LinearLayout
@@ -208,7 +210,7 @@
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/baseline_square_24" />
                     <TextView
-                        android:id="@+id/text_eöptySeat"
+                        android:id="@+id/text_emptySeat"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -231,6 +233,20 @@
                     android:textStyle="italic"
                     android:textColor="@android:color/black"
                     android:padding="8dp" />
+
+                <!-- GridLayout -->
+                <GridLayout
+                    android:id="@+id/seatGridLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="5"
+                    android:rowCount="6"
+                    android:layout_gravity="center">
+
+                    <!-- Dinamik olarak eklenen koltuklar burada yer alacak -->
+
+                </GridLayout>
+
 
                 <ImageView
                     android:id="@+id/car_picture"

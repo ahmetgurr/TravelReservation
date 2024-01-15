@@ -103,7 +103,7 @@
         <item>Osmaniye</item>
         <item>Düzce</item>
     </string-array>
-    
+
     <string-array name="planets_array">
         <item>00:00</item>
         <item> 1:00</item>
@@ -186,7 +186,17 @@ Travel Reservation Team\n
 
     <string name="expandable_card_view_behavior">com.google.android.material.card.ExpandableCardViewBehavior</string>
 
+    <string name="information_text">To get detailed information about the processing of personal data, please read the information text.</string>
 
+    <style name="SeatButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:background">@drawable/seat_background</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 
 
 </resources>

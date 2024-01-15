@@ -1,0 +1,9 @@
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/seatImageView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:src="@drawable/baseline_airline_seat_recline_normal_24"
+    android:contentDescription="Seat"
+    tools:ignore="MissingConstraints" />

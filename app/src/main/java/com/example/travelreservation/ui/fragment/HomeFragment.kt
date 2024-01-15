@@ -58,6 +58,7 @@ class HomeFragment : Fragment() {
             Toast.makeText(context, "Haritalar", Toast.LENGTH_SHORT).show()
         }
 
+
         //For the try Button
         binding.dropdownFragment.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToDropdown()

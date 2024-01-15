@@ -48,6 +48,9 @@
         <argument
             android:name="selectedCityTo"
             app:argType="string" />
+        <action
+            android:id="@+id/action_travelListFragment_to_passengerInfoFragment"
+            app:destination="@id/passengerInfoFragment" />
 
     </fragment>
 
@@ -60,4 +63,27 @@
         android:id="@+id/mapsActivity"
         android:name="com.example.travelreservation.ui.MapsActivity"
         android:label="MapsActivity" />
+    <fragment
+        android:id="@+id/passengerInfoFragment"
+        android:name="com.example.travelreservation.ui.fragment.PassengerInfoFragment"
+        android:label="fragment_passenger_info"
+        tools:layout="@layout/fragment_passenger_info" >
+        <argument
+            android:name="selectedItemId"
+            app:argType="integer" />
+        <argument
+            android:name="selectedCityFrom"
+            app:argType="string" />
+        <argument
+            android:name="selectedCityTo"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_passengerInfoFragment_to_addPassengerFragment"
+            app:destination="@id/addPassengerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPassengerFragment"
+        android:name="com.example.travelreservation.ui.fragment.AddPassengerFragment"
+        android:label="fragment_add_passenger"
+        tools:layout="@layout/fragment_add_passenger" />
 </navigation>

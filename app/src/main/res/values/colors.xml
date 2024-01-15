@@ -29,4 +29,9 @@
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorRed">#C11515</color>
+
+
+    <color name="colorText">#404B57</color>
+    <color name="colorText2">#BDBDBD</color>
+    <color name="colorText3">#99A0B0</color>
 </resources>

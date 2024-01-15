@@ -41,7 +41,7 @@ class Dropdown : Fragment() {
 
         for (i in 1..seatCount) {
             val seatImageView = ImageView(requireContext())
-            seatImageView.setImageResource(R.drawable.baseline_question_mark_24)
+            seatImageView.setImageResource(R.drawable.baseline_airline_seat_recline_normal_24)
             seatImageView.layoutParams = GridLayout.LayoutParams().apply {
                 width = 100 // Koltuk genişliği
                 height = 100 // Koltuk yüksekliği
