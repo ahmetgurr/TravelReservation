@@ -1,34 +1,29 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-
-
-    <!-- Add a ScrollView if there are many seats -->
     <GridLayout
-        android:id="@+id/gridLayout"
+        android:id="@+id/busLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:columnCount="5"
-        android:rowCount="6"
-        android:alignmentMode="alignMargins"
-        android:columnOrderPreserved="false"
-        android:useDefaultMargins="true"
-        android:layout_gravity="center">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
-        <!-- Add seats dynamically in code -->
+        <!-- Otobüs koltukları burada dinamik olarak eklenecek -->
 
     </GridLayout>
 
     <Button
-        android:id="@+id/btnConfirmAndContinue"
-        android:layout_width="match_parent"
+        android:id="@+id/genderButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirm and Continue"
-        android:layout_marginTop="16dp"/>
+        android:layout_below="@id/busLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Cinsiyet Seçimi"
+        android:textSize="16sp" />
 
-</LinearLayout>
+</RelativeLayout>

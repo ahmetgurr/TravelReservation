@@ -1,22 +1,17 @@
 package com.example.travelreservation.adapter
 
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.travelreservation.model.Passenger
-import android.view.LayoutInflater
 import com.example.travelreservation.databinding.ItemPassengerBinding
+import com.example.travelreservation.model.Passenger
 
-class PassengerAdapter(
-    private val passengerList: List<Passenger>
-) : RecyclerView.Adapter<PassengerAdapter.PassengerViewHolder>() {
+class PassengerAdapter(private val onDeleteClickListener: (Passenger) -> Unit) : RecyclerView.Adapter<PassengerAdapter.PassengerViewHolder>() {
 
-    inner class PassengerViewHolder(val binding: ItemPassengerBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    var passengerList: List<Passenger> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PassengerViewHolder {
-        val binding =
-            ItemPassengerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemPassengerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PassengerViewHolder(binding)
     }
 
@@ -25,14 +20,35 @@ class PassengerAdapter(
     }
 
     override fun onBindViewHolder(holder: PassengerViewHolder, position: Int) {
-        val currentPassenger = passengerList[position]
-
-        // TODO: ViewHolder içindeki bileşenlere verileri bağla
-        // Örneğin:
-        // holder.binding.textViewName.text = currentPassenger.name
-        // holder.binding.textViewSurname.text = currentPassenger.surname
-        // vb.
+        val currentItem = passengerList[position]
+        holder.bind(currentItem)
     }
 
+    fun submitList(passengers: List<Passenger>) {
+        passengerList = passengers
+        notifyDataSetChanged()
+    }
 
+    inner class PassengerViewHolder(private val binding: ItemPassengerBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(passenger: Passenger) {
+            binding.apply {
+                textViewName.text = passenger.Name
+                textViewSurname.text = passenger.Surname
+
+                // ImageDelete simgesine tıklanma işlemi
+                imageDelete.setOnClickListener {
+                    onDeleteClickListener.invoke(passenger)
+                }
+            }
+        }
+    }
 }
+
+// Set data to views
+/*
+textSurname.text = passenger.Surname
+textName.text = passenger.Name
+textBirthDay.text = passenger.BirthDay
+textPhone.text = passenger.Phone
+textGender.text = passenger.Gender
+ */

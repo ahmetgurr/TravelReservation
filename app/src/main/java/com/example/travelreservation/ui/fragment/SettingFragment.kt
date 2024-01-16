@@ -30,7 +30,7 @@ class SettingFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = FragmentSettingBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-
+        // Firebase Auth ve Firestore objesini oluştur
         auth = Firebase.auth
         db = FirebaseFirestore.getInstance()
         setHasOptionsMenu(true) // Bu, Fragment'ın kendi menüsünü kullanacağını belirtir

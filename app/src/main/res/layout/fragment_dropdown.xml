@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <GridLayout
-        android:id="@+id/busLayout"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutBirthDay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:columnCount="4"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:hint="Birth Day">
 
-        <!-- Otobüs koltukları burada dinamik olarak eklenecek -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextBirthDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:onClick="showDatePicker"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:drawableEnd="@drawable/ic_calendar"
+        android:drawablePadding="8dp" />
 
-    </GridLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/genderButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/busLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Cinsiyet Seçimi"
-        android:textSize="16sp" />
-
-</RelativeLayout>
+</LinearLayout>

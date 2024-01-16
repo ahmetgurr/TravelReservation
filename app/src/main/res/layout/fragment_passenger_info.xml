@@ -112,16 +112,17 @@
 
     </LinearLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
+        android:id="@+id/recyclerView"
         android:layout_width="408dp"
         android:layout_height="330dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
 
     <Button
         android:id="@+id/btnAddPassengers"
@@ -130,7 +131,7 @@
         android:text="Add Passenger"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
 
 

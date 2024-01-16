@@ -85,5 +85,9 @@
         android:id="@+id/addPassengerFragment"
         android:name="com.example.travelreservation.ui.fragment.AddPassengerFragment"
         android:label="fragment_add_passenger"
-        tools:layout="@layout/fragment_add_passenger" />
+        tools:layout="@layout/fragment_add_passenger" >
+        <action
+            android:id="@+id/action_addPassengerFragment_to_passengerInfoFragment"
+            app:destination="@id/passengerInfoFragment" />
+    </fragment>
 </navigation>
