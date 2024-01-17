@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelreservation.R
@@ -61,6 +62,25 @@ class PassengerInfoFragment : Fragment() {
             Toast.makeText(context, "Add Passenger", Toast.LENGTH_SHORT).show()
         }
 
+        // Continue Button Argumanları gönder
+        //Search Fligt Button
+        binding.btnContinue.setOnClickListener {
+            // Get selected cities from AutoCompleteTextViews
+            val selectedCityFrom = binding.textCityFrom.text.toString()
+            val selectedCityTo = binding.textCityTo.text.toString()
+
+
+            // Create an action with selected cities
+            val action = PassengerInfoFragmentDirections.actionPassengerInfoFragmentToChooseSeatFragment(
+                selectedCityFrom,
+                selectedCityTo,
+            )
+            // Navigate with the action
+            Navigation.findNavController(it).navigate(action)
+
+            Toast.makeText(context, "Ticket List", Toast.LENGTH_SHORT).show()
+        }
+
 
         // RecyclerView ve Adapter'ı oluşturun
         recyclerView = binding.recyclerView
@@ -76,6 +96,7 @@ class PassengerInfoFragment : Fragment() {
 
         // Firestore'dan yolcu verilerini alın ve Adapter'a ekleyin
         loadPassengers(selectedItemId)
+
 
     }
 

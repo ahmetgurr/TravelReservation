@@ -80,6 +80,9 @@
         <action
             android:id="@+id/action_passengerInfoFragment_to_addPassengerFragment"
             app:destination="@id/addPassengerFragment" />
+        <action
+            android:id="@+id/action_passengerInfoFragment_to_chooseSeatFragment"
+            app:destination="@id/chooseSeatFragment" />
     </fragment>
     <fragment
         android:id="@+id/addPassengerFragment"
@@ -89,5 +92,17 @@
         <action
             android:id="@+id/action_addPassengerFragment_to_passengerInfoFragment"
             app:destination="@id/passengerInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseSeatFragment"
+        android:name="com.example.travelreservation.ui.fragment.ChooseSeatFragment"
+        android:label="fragment_choose_seat"
+        tools:layout="@layout/fragment_choose_seat" >
+        <argument
+            android:name="selectedCityFrom"
+            app:argType="string" />
+        <argument
+            android:name="selectedCityTo"
+            app:argType="string" />
     </fragment>
 </navigation>
