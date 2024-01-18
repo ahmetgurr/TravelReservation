@@ -54,6 +54,8 @@ class ChooseSeatFragment : Fragment() {
         binding.btnMakeReservation.setOnClickListener {
             if (selectedSeatNumber != null) {
                 makeReservation()
+                val action = ChooseSeatFragmentDirections.actionChooseSeatFragmentToHomeFragment()
+                Navigation.findNavController(it).navigate(action)
             } else {
                 Toast.makeText(requireContext(), "Please select a seat", Toast.LENGTH_SHORT).show()
             }

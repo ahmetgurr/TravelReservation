@@ -49,9 +49,9 @@
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/baseline_keyboard_double_arrow_right_24" />
+                    android:layout_width="85dp"
+                    android:layout_height="35dp"
+                    app:srcCompat="@drawable/plane" />
 
                 <TextView
                     android:id="@+id/textCityTo"
@@ -157,112 +157,115 @@
                 android:id="@+id/expandedLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
 
-                android:orientation="vertical"
-                >
-
-                <!-- Gender / Female / Empty Seat -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-
-                    <ImageView
-                        android:id="@+id/genderMale"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/square_male"/>
-                    <TextView
-                        android:id="@+id/text_genderMale"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:maxLines="1"
-                        android:text="Male"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/genderFemale"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/square_female" />
-                    <TextView
-                        android:id="@+id/text_genderFemale"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:maxLines="1"
-                        android:text="Female"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-                    <ImageView
-                        android:id="@+id/emptySeat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/baseline_square_24" />
-                    <TextView
-                        android:id="@+id/text_emptySeat"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:maxLines="1"
-                        android:text="Empty Seat"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-            </LinearLayout>
-
-                <!-- Lütfem Koltuk seçin metin -->
+                <!-- Lütfen seyahat kurallarına dikkat ediniz. -->
                 <TextView
-                    android:id="@+id/text_chooseSeat"
+                    android:id="@+id/textAttentionTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Please choose your seat"
+                    android:text="Please pay attention to the travel rules."
                     android:textSize="18sp"
                     android:textAlignment="center"
                     android:textStyle="italic"
                     android:textColor="@android:color/black"
                     android:padding="8dp" />
-
-                <!-- GridLayout -->
-                <GridLayout
-                    android:id="@+id/seatGridLayout"
+                <!-- Text Cabin and Baggage-->
+                <LinearLayout
+                    android:id="@+id/linearLayoutText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="5"
-                    android:rowCount="6"
-                    android:layout_gravity="center">
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
 
-                    <!-- Dinamik olarak eklenen koltuklar burada yer alacak -->
+                    <TextView
+                        android:id="@+id/textCabbinLuggage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:maxLines="1"
+                        android:text="Cabin Luggage (1x8kg)"
+                        android:textAlignment="center"
+                        android:drawableLeft="@drawable/baseline_check_24"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                </GridLayout>
-
-
-                <ImageView
-                    android:id="@+id/car_picture"
+                    <TextView
+                        android:id="@+id/textBaggageAllowance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:maxLines="1"
+                        android:text="Baggage Allowance (1x20kg)"
+                        android:textSize="16sp"
+                        android:drawableLeft="@drawable/baseline_check_24"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <!-- Text Catering and Choose Seat-->
+                <LinearLayout
+                    android:id="@+id/linearLayoutText1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/car" />
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
 
-                <!--Button Confirm and Continue -->
+                    <TextView
+                        android:id="@+id/textCatering"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:maxLines="1"
+                        android:text="Catering"
+                        android:textAlignment="center"
+                        android:drawableLeft="@drawable/baseline_check_24"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textStandartChooseSeat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:maxLines="1"
+                        android:text="Standard Seat selection"
+                        android:textSize="16sp"
+                        android:drawableLeft="@drawable/baseline_check_24"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <!-- Text Catering and Choose Seat-->
+                <LinearLayout
+                    android:id="@+id/linearLayoutText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:id="@+id/textAttention"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:maxLines="1"
+                        android:text="Change fee $50 (Up to last 12 hours)"
+                        android:textAlignment="center"
+                        android:drawableLeft="@drawable/baseline_info_24_red"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <!--Button Continue -->
                 <Button
                     android:id="@+id/btnConfirmAndContinue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:text="Confirm and Continue"/>
-
-
+                    android:text="Continue"/>
             </LinearLayout>
 
 

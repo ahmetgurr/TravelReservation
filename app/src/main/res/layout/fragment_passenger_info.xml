@@ -54,11 +54,10 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/imageViewArrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_keyboard_double_arrow_right_24" />
-
+                android:id="@+id/imageView5"
+                android:layout_width="85dp"
+                android:layout_height="35dp"
+                app:srcCompat="@drawable/plane" />
             <TextView
                 android:id="@+id/textCityTo"
                 android:layout_width="0dp"
