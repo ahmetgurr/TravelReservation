@@ -1,87 +1,51 @@
 package com.example.travelreservation.adapter
-/*
-import android.content.Context
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.travelreservation.R
+import com.example.travelreservation.databinding.ItemTicketBinding
 import com.example.travelreservation.model.Ticket
 
 class TicketsAdapter(
-    private val context: Context,
-    private val ticketList: List<Ticket>
+    private val tickets: List<Ticket>,
+    private val onDeleteClickListener: OnDeleteClickListener
 ) : RecyclerView.Adapter<TicketsAdapter.TicketViewHolder>() {
 
-    inner class TicketViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val cityFrom: TextView = itemView.findViewById(R.id.text_cityFrom)
-        val cityTo: TextView = itemView.findViewById(R.id.textCityTo)
-        val passengerName: TextView = itemView.findViewById(R.id.textViewName)
-        val ticketId: TextView = itemView.findViewById(R.id.textViewId)
-        val seatNumber: TextView = itemView.findViewById(R.id.textViewSeatNumber)
+    interface OnDeleteClickListener {
+        fun onDeleteClick(ticket: Ticket)
+    }
+
+    inner class TicketViewHolder(private val binding: ItemTicketBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(ticket: Ticket) {
+            binding.apply {
+                textViewSeatNumber.text = "Seat No:${ticket.seatNumber}"
+                textCityFrom.text = "${ticket.cityFrom}"
+                textCityTo.text = "${ticket.cityTo}"
+                textViewName.text = "${ticket.userName}"
+                textViewId.text = "Travel ID: ${ticket.id}"
+
+                buttonDelete.setOnClickListener {
+                    onDeleteClickListener.onDeleteClick(ticket)
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_ticket, parent, false)
-        return TicketViewHolder(itemView)
-    }
-
-    override fun onBindViewHolder(holder: TicketViewHolder, position: Int) {
-        val currentTicket = ticketList[position]
-
-        holder.cityFrom.text = currentTicket.cityFrom
-        holder.cityTo.text = currentTicket.cityTo
-        holder.passengerName.text = currentTicket.userName
-        holder.ticketId.text = currentTicket.id
-        holder.seatNumber.text = currentTicket.seatNumber.toString()
-
-    }
-
-    override fun getItemCount(): Int {
-        return ticketList.size
-    }
-}
- */
-
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import com.example.travelreservation.R
-import com.example.travelreservation.model.Ticket
-
-class TicketsAdapter(
-    private val tickets: List<Ticket>
-) : RecyclerView.Adapter<TicketsAdapter.TicketViewHolder>() {
-
-    class TicketViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val seatNumberTextView: TextView = itemView.findViewById(R.id.textViewSeatNumber)
-        val cityFromTextView: TextView = itemView.findViewById(R.id.text_cityFrom)
-        val cityToTextView: TextView = itemView.findViewById(R.id.textCityTo)
-        val userNameTextView: TextView = itemView.findViewById(R.id.textViewName)
-        val ticketIdTextView: TextView = itemView.findViewById(R.id.textViewId)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_ticket, parent, false)
-        return TicketViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: TicketViewHolder, position: Int) {
-        val ticket = tickets[position]
-        holder.seatNumberTextView.text = "Seat No:${ticket.seatNumber}"
-        holder.cityFromTextView.text = "${ticket.cityFrom}"
-        holder.cityToTextView.text = "${ticket.cityTo}"
-        holder.userNameTextView.text = "${ticket.userName}"
-        holder.ticketIdTextView.text = "Travel ID: ${ticket.id}"
+        val binding = ItemTicketBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return TicketViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
         return tickets.size
     }
+
+    override fun onBindViewHolder(holder: TicketViewHolder, position: Int) {
+        val ticket = tickets[position]
+        holder.bind(ticket)
+    }
 }
+
+
 
 

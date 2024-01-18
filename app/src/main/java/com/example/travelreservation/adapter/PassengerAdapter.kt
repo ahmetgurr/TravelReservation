@@ -13,8 +13,6 @@ import com.example.travelreservation.ui.fragment.PassengerInfoFragment
 class PassengerAdapter(
     private val onDeleteClickListener: (Passenger) -> Unit,
 ) : RecyclerView.Adapter<PassengerAdapter.PassengerViewHolder>() {
-
-    private var selectedPosition = -1
     private var selectedCityFrom: String = ""
     private var selectedCityTo: String = ""
     var passengerList: List<Passenger> = emptyList()
@@ -55,12 +53,6 @@ class PassengerAdapter(
                 // ImageDelete simgesine tıklanma işlemi
                 imageDelete.setOnClickListener {
                     onDeleteClickListener.invoke(passenger)
-                }
-                // RadioButton durumu
-                radioButtonPassenger.isChecked = position == selectedPosition
-                radioButtonPassenger.setOnClickListener {
-                    selectedPosition = adapterPosition
-                    notifyDataSetChanged()
                 }
             }
             // Tıklanan satırın verilerini ChooseSeatFragment'e gönder

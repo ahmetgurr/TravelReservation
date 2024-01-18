@@ -160,6 +160,19 @@
                 android:padding="8dp"
                 app:drawableLeftCompat="@drawable/baseline_info_24_red" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:id="@+id/buttonDelete"
+                android:background="@color/red_300"
+                android:layout_gravity="center_horizontal"
+                android:drawableRight="@drawable/baseline_delete_24"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+
+
 
         </LinearLayout>
 
