@@ -19,15 +19,12 @@ class TicketsFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var ticketsAdapter: TicketsAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTicketsBinding.inflate(inflater, container, false)
+        val context = requireContext() // Bu satırı ekleyin
         return binding.root
     }
 
@@ -62,8 +59,12 @@ class TicketsFragment : Fragment() {
 
             // RecyclerView için adapter ve layout manager'ı ayarla
             ticketsAdapter = TicketsAdapter(ticketList)
-            binding.recyclerViewTickets.adapter = ticketsAdapter
-            binding.recyclerViewTickets.layoutManager = LinearLayoutManager(requireContext())
+
+            // Fragment'ın attach olduğu durumu kontrol et
+            if (isAdded) {
+                binding.recyclerViewTickets.adapter = ticketsAdapter
+                binding.recyclerViewTickets.layoutManager = LinearLayoutManager(requireContext())
+            }
         }
     }
 }
