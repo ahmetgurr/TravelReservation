@@ -22,8 +22,6 @@ class ChooseSeatFragment : Fragment() {
     private var selectedSeatNumber: Int? = null
     private val reservedSeats = mutableListOf<Int>()
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
