@@ -34,4 +34,14 @@
     <color name="colorText">#404B57</color>
     <color name="colorText2">#BDBDBD</color>
     <color name="colorText3">#99A0B0</color>
+
+    <color name="colorReserved">#FFA500</color>
+    <color name="colorEmpty">#B2E1B2</color>
+    <color name="colorSelected">#954343</color>
+
+    <color name="colorYourSeat">#FFA500</color>
+    <color name="colorAvailable">#B2E1B2</color>
+    <color name="colorBooked">#954343</color>
+
+
 </resources>
