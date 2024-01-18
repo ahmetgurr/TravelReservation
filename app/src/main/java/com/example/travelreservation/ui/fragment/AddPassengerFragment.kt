@@ -26,13 +26,9 @@ import java.util.Locale
 class AddPassengerFragment : Fragment() {
     private lateinit var binding: FragmentAddPassengerBinding
     private lateinit var editTextBirthDay: TextInputEditText
-
     private lateinit var auth: FirebaseAuth
     private lateinit var db : FirebaseFirestore
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,8 +49,6 @@ class AddPassengerFragment : Fragment() {
         binding.btnAddPassenger.setOnClickListener {
             addPassenger()
         }
-
-
     }
 
     private fun addPassenger() {
@@ -93,21 +87,17 @@ class AddPassengerFragment : Fragment() {
                 // Oluşturulan kimliği "id" alanına yaz
                 passengersCollection.document(passengerId).update("id", passengerId)
                     .addOnSuccessListener {
-                        // Başarıyla güncellendi
                         Navigation.findNavController(requireView()).navigate(R.id.action_addPassengerFragment_to_passengerInfoFragment)
                         Toast.makeText(requireContext(), "Passenger added successfully!", Toast.LENGTH_SHORT).show()
                     }
                     .addOnFailureListener {
-                        // Güncelleme hatası
                         Toast.makeText(requireContext(), "Could not update passenger id!", Toast.LENGTH_SHORT).show()
                     }
             }
             .addOnFailureListener {
-                // Eklerken hata oluştu
                 Toast.makeText(requireContext(), "Could not add passenger!", Toast.LENGTH_SHORT).show()
             }
     }
-
 
     private fun setupDatePicker() {
         editTextBirthDay.setOnClickListener {
@@ -118,15 +108,11 @@ class AddPassengerFragment : Fragment() {
     private fun showDatePicker() {
         val builder = MaterialDatePicker.Builder.datePicker()
         val picker = builder.build()
-
         picker.addOnPositiveButtonClickListener { selection ->
             val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
             val formattedDate = dateFormat.format(Date(selection))
-
             editTextBirthDay.setText(formattedDate)
         }
-
         picker.show(parentFragmentManager, picker.toString())
     }
-
 }

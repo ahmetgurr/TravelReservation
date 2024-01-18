@@ -59,7 +59,6 @@ class TicketsFragment : Fragment(), TicketsAdapter.OnDeleteClickListener {
 
             // RecyclerView için adapter ve layout manager'ı ayarla
             ticketsAdapter = TicketsAdapter(ticketList, this)
-
             // Fragment'ın attach olduğu durumu kontrol et
             if (isAdded) {
                 binding.recyclerViewTickets.adapter = ticketsAdapter
@@ -67,14 +66,12 @@ class TicketsFragment : Fragment(), TicketsAdapter.OnDeleteClickListener {
             }
         }
     }
-
     // Ticket silme işlemini gerçekleştir
     override fun onDeleteClick(ticket: Ticket) {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         val firestore = FirebaseFirestore.getInstance()
         val reservationCollection = firestore.collection("Users").document(userId!!)
             .collection("Reservation")
-
         // Firestore'dan ilgili rezervasyonu sil
         ticket.id?.let {
             reservationCollection.document(it)

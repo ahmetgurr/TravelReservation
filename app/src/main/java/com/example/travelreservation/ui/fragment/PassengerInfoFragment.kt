@@ -41,6 +41,8 @@ class PassengerInfoFragment : Fragment() {
         val selectedItemId = arguments?.getString("selectedItemId")
         val selectedCityFrom = arguments?.getString("selectedCityFrom")
         val selectedCityTo = arguments?.getString("selectedCityTo")
+        // travel.id'yi logda yazdır
+        Log.d("PassengerInfoFragment", "Selected Item ID: $selectedItemId")
 
         val textCityFrom: TextView = view.findViewById(R.id.text_cityFrom)
         val textCityTo: TextView = view.findViewById(R.id.textCityTo)
@@ -79,13 +81,11 @@ class PassengerInfoFragment : Fragment() {
         recyclerView.adapter = passengerAdapter
 
         // Firestore'dan yolcu verilerini alın ve Adapter'a ekleyin
-        loadPassengers(selectedItemId)
+        loadPassengers()
         // CardView'da seçili yolcuyu seçtikten sonra seçili şehiri göstermek için
         passengerAdapter.setSelectedCities(selectedCityFrom, selectedCityTo)
-
     }
-
-    private fun loadPassengers(selectedItemId: String?) {
+    private fun loadPassengers() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         val passengersCollection = FirebaseFirestore.getInstance()
             .collection("Users")
@@ -97,7 +97,6 @@ class PassengerInfoFragment : Fragment() {
                 Log.e("PassengerInfoFragment", "Error getting passengers", error)
                 return@addSnapshotListener
             }
-
             val passengers = mutableListOf<Passenger>()
             snapshot?.documents?.forEach { document ->
                 val passenger = document.toObject(Passenger::class.java)
@@ -113,7 +112,6 @@ class PassengerInfoFragment : Fragment() {
             passengerAdapter.submitList(passengers)
         }
     }
-
     private fun deletePassenger(passenger: Passenger) {
         Log.d("DeletePassenger", "Delete passenger function started.")
         val userId = FirebaseAuth.getInstance().currentUser?.uid

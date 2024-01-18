@@ -22,10 +22,6 @@ class ChooseSeatFragment : Fragment() {
     private var selectedSeatNumber: Int? = null
     private val reservedSeats = mutableListOf<Int>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,7 +53,6 @@ class ChooseSeatFragment : Fragment() {
         binding.btnMakeReservation.setOnClickListener {
             makeReservation()
         }
-
 
     }
     private fun createSeats() {
@@ -163,16 +158,14 @@ class ChooseSeatFragment : Fragment() {
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    // Belirli koltuğun rezervasyon bilgisi bulundu
-                    // Eğer rezervasyon yapılmışsa, reservedSeats listesine ekleyebilirsiniz
+                    // Eğer rezervasyon yapılmışsa, reservedSeats listesine ekle
                     val reservedSeat = document.getLong("seatNumber")?.toInt()
                     reservedSeat?.let { reservedSeats.add(it) }
                 }
-                // Koltuk rengini güncelle, işte burada çağırabilirsiniz
+                // Koltuk rengini güncelle
                 changeSeatColor(binding.gridLayoutSeats, seatNumber, reservedSeats.contains(seatNumber))
             }
             .addOnFailureListener { exception ->
-                // Hata durumunda buraya düşer
                 Log.w("ChooseSeatFragment", "Error getting reservation info", exception)
             }
     }

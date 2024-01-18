@@ -29,11 +29,6 @@ class TravelsFragment : Fragment() {
     private val mDisposable = CompositeDisposable()
     private lateinit var places: ArrayList<Place>
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +41,6 @@ class TravelsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         places = ArrayList()
-
         val db = Room.databaseBuilder(requireContext(), PlaceDatabase::class.java, "Places")
             //.allowMainThreadQueries()
             .build()

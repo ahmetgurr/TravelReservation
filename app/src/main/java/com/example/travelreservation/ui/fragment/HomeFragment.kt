@@ -24,7 +24,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         cities = resources.getStringArray(R.array.cities_array)
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -36,41 +35,31 @@ class HomeFragment : Fragment() {
 
         //Search Fligt Button
         binding.btnSearchFlight.setOnClickListener {
-            // Get selected cities from AutoCompleteTextViews
             val selectedCityFrom = binding.planetsSpinnerAutoCompleteFrom.text.toString()
             val selectedCityTo = binding.planetsSpinnerAutoCompleteTo.text.toString()
 
-            // Create an action with selected cities
             val action = HomeFragmentDirections.actionHomeFragmentToTravelListFragment(
                 selectedCityFrom,
                 selectedCityTo
             )
-            // Navigate with the action
             Navigation.findNavController(it).navigate(action)
-
             Toast.makeText(context, "Ticket List", Toast.LENGTH_SHORT).show()
         }
-
         //Maps Button
         binding.denemeMaps.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToMapsActivity()
             Navigation.findNavController(it).navigate(action)
             Toast.makeText(context, "Haritalar", Toast.LENGTH_SHORT).show()
         }
-
-
         //For the try Button
         binding.dropdownFragment.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToDropdown()
             Navigation.findNavController(it).navigate(action)
             Toast.makeText(context, "Dropdown Sayfası", Toast.LENGTH_SHORT).show()
         }
-
-
         //using spinner menu
         val spinner = binding.spinnerHours
         val spinner1 = binding.spinnerDate
-
         //adapter for the "hours_days"
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -80,7 +69,6 @@ class HomeFragment : Fragment() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
         }
-
         //adapter for the "week_days"
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -90,7 +78,6 @@ class HomeFragment : Fragment() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner1.adapter = adapter
         }
-
         // DropDown menu for the "from" and "to" cities
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, cities)
         binding.planetsSpinnerAutoCompleteFrom.setAdapter(adapter)
@@ -117,6 +104,5 @@ class HomeFragment : Fragment() {
         binding.planetsSpinnerAutoCompleteTo.setOnClickListener {
             binding.planetsSpinnerAutoCompleteTo.showDropDown()
         }
-
     }
 }

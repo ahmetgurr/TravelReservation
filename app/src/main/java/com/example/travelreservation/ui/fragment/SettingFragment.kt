@@ -79,12 +79,10 @@ class SettingFragment : Fragment() {
 
             // Firestore'daki bilgileri güncelle
             updateInformationInFirestore(newUsername, newEmail, newPhone)
-
             // UI elemanlarına güncellenmiş bilgileri ata
             binding.editTextNewUsername.setText(newUsername)
             binding.editTextNewEmail.setText(newEmail)
             binding.editTextNewPhone.setText(newPhone)
-
             // Kullanıcıya güncelleme başarılı mesajını göstermek için Toast kullanabilirsiniz
             Toast.makeText(context, "Bilgiler güncellendi.", Toast.LENGTH_LONG).show()
         }
@@ -101,7 +99,6 @@ class SettingFragment : Fragment() {
         binding.contactUsTextView.setOnClickListener {
             showCustomDialog(getString(R.string.contact_us_text))
         }
-
         // Kullanıcı ID'sini kontrol etme
         val user = auth.currentUser
         if (user != null) {
@@ -186,7 +183,6 @@ class SettingFragment : Fragment() {
                 }
         }
     }
-
     private fun showCustomDialog(content: String) {
         val builder = AlertDialog.Builder(requireContext())
         val inflater = requireActivity().layoutInflater
@@ -207,24 +203,3 @@ class SettingFragment : Fragment() {
     }
 
 }
-
-/*
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.nav_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.settingFragment -> {
-                auth.signOut()
-                val intent = Intent(context, MainActivity::class.java)
-                startActivity(intent)
-                // Menü öğesi 1 seçildiğinde yapılacak işlemler
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
-
- */
-
