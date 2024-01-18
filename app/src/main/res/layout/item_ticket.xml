@@ -66,36 +66,38 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Name & Surname -->
+            <!-- NameSurname -->
             <LinearLayout
-                android:id="@+id/linearLayoutPassengerInfo"
+                android:id="@+id/linearLayoutNameSurname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
                 android:weightSum="4">
-
                 <TextView
                     android:id="@+id/textViewName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="128dp"
+                    android:layout_weight="2"
+                    android:maxLines="1"
+                    android:text="textViewName"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="Name" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textViewSurname"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="51dp"
+                    android:layout_weight="2"
+                    android:maxLines="1"
+                    android:text="textViewSurname"
                     android:textAlignment="center"
+                    android:textColor="@android:color/black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintVertical_bias="0.54"
-                    tools:text="Surname" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- City From and City To -->
@@ -106,7 +108,7 @@
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
-                android:weightSum="4">
+                android:weightSum="2">
 
                 <TextView
                     android:id="@+id/textViewId"
@@ -119,7 +121,17 @@
                     android:textColor="@android:color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+            </LinearLayout>
 
+            <!-- seatId -->
+            <LinearLayout
+                android:id="@+id/linearLayoutSeatId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:weightSum="4">
                 <TextView
                     android:id="@+id/textViewSeatNumber"
                     android:layout_width="0dp"
@@ -133,17 +145,20 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+
+
             <!-- Text Biletle ilgili işlem için ulaşın -->
             <TextView
                 android:id="@+id/text_chooseSeat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Please contact our Travel Reservation team to process your ticket."
-                android:textSize="18sp"
+                android:text="  Please contact our Travel Reservation team to process your ticket."
+                android:textSize="14sp"
                 android:textAlignment="center"
                 android:textStyle="italic"
-                android:textColor="@android:color/holo_red_dark"
-                android:padding="8dp" />
+                android:textColor="@color/red_300"
+                android:padding="8dp"
+                app:drawableLeftCompat="@drawable/baseline_info_24_red" />
 
 
         </LinearLayout>
