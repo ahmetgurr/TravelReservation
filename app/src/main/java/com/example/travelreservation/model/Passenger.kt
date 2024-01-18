@@ -6,5 +6,6 @@ data class Passenger(
     val Name: String = "",
     val BirthDay: String = "",
     val Phone: String = "",
-    val Gender: String = ""
+    val Gender: String = "",
+    val isSelected: Boolean = false
 )

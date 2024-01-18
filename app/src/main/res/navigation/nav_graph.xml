@@ -104,5 +104,7 @@
         <argument
             android:name="selectedCityTo"
             app:argType="string" />
+        <argument android:name="selectedPassengerId"
+            app:argType="string" />
     </fragment>
 </navigation>

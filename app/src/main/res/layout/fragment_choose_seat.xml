@@ -88,7 +88,6 @@
                 android:layout_marginStart="128dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:text='@{selectedRecipe.recipe_name}'
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -106,7 +105,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:text='@{selectedRecipe.recipe_name}'
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold"

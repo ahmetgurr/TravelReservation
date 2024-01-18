@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelreservation.R
@@ -25,11 +24,7 @@ class PassengerInfoFragment : Fragment() {
     private lateinit var binding: FragmentPassengerInfoBinding
     private lateinit var passengerAdapter: PassengerAdapter
     private lateinit var recyclerView: RecyclerView
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private var selectedPassengerId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,52 +37,41 @@ class PassengerInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         // TravelListFragment'den taşınan verileri al
         val selectedItemId = arguments?.getString("selectedItemId")
         val selectedCityFrom = arguments?.getString("selectedCityFrom")
         val selectedCityTo = arguments?.getString("selectedCityTo")
 
-        // TextView'ları bul
         val textCityFrom: TextView = view.findViewById(R.id.text_cityFrom)
         val textCityTo: TextView = view.findViewById(R.id.textCityTo)
 
-        // TextView'lara verileri ekle
         textCityFrom.text = selectedCityFrom
         textCityTo.text = selectedCityTo
 
         // Add Passenger Button
-        binding.btnAddPassengers.setOnClickListener{
-            Navigation.nextPage(R.id.action_passengerInfoFragment_to_addPassengerFragment,it)
+        binding.btnAddPassengers.setOnClickListener {
+            Navigation.nextPage(R.id.action_passengerInfoFragment_to_addPassengerFragment, it)
             Toast.makeText(context, "Add Passenger", Toast.LENGTH_SHORT).show()
         }
 
-        // Continue Button Argumanları gönder
-        //Search Fligt Button
         binding.btnContinue.setOnClickListener {
-            // Get selected cities from AutoCompleteTextViews
             val selectedCityFrom = binding.textCityFrom.text.toString()
             val selectedCityTo = binding.textCityTo.text.toString()
 
-
-            // Create an action with selected cities
-            val action = PassengerInfoFragmentDirections.actionPassengerInfoFragmentToChooseSeatFragment(
-                selectedCityFrom,
-                selectedCityTo,
-            )
-            // Navigate with the action
+            val action = PassengerInfoFragmentDirections
+                .actionPassengerInfoFragmentToChooseSeatFragment(
+                    selectedCityFrom,
+                    selectedCityTo,
+                    selectedPassengerId ?: ""
+                )
             Navigation.findNavController(it).navigate(action)
-
             Toast.makeText(context, "Ticket List", Toast.LENGTH_SHORT).show()
         }
-
-
         // RecyclerView ve Adapter'ı oluşturun
         recyclerView = binding.recyclerView
         passengerAdapter = PassengerAdapter { passenger ->
             deletePassenger(passenger)
         }
-
         // LayoutManager ayarlayın (örneğin, LinearLayoutManager kullanabilirsiniz)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -96,7 +80,8 @@ class PassengerInfoFragment : Fragment() {
 
         // Firestore'dan yolcu verilerini alın ve Adapter'a ekleyin
         loadPassengers(selectedItemId)
-
+        // CardView'da seçili yolcuyu seçtikten sonra seçili şehiri göstermek için
+        passengerAdapter.setSelectedCities(selectedCityFrom, selectedCityTo)
 
     }
 
@@ -109,21 +94,22 @@ class PassengerInfoFragment : Fragment() {
 
         passengersCollection.addSnapshotListener { snapshot, error ->
             if (error != null) {
-                // Hata durumu
                 Log.e("PassengerInfoFragment", "Error getting passengers", error)
                 return@addSnapshotListener
             }
 
-            // Verileri alma ve Adapter'a ekleme işlemleri
             val passengers = mutableListOf<Passenger>()
             snapshot?.documents?.forEach { document ->
                 val passenger = document.toObject(Passenger::class.java)
                 if (passenger != null) {
                     passengers.add(passenger)
+                    // Seçili yolcunun ID'sini burada kontrol edebilir ve atayabilirsiniz.
+                    if (passenger.isSelected) {
+                        selectedPassengerId = passenger.id
+                    }
                 }
             }
 
-            // RecyclerView için Adapter'a verileri ata
             passengerAdapter.submitList(passengers)
         }
     }
@@ -157,6 +143,4 @@ class PassengerInfoFragment : Fragment() {
                 }
         }
     }
-
-
 }
