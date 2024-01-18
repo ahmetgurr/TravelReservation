@@ -81,6 +81,7 @@ class ChooseSeatFragment : Fragment() {
         }
     }
 
+
     private fun createSeatCard(seatNumber: Int): CardView {
         val cardView = CardView(requireContext())
         cardView.radius = 8f

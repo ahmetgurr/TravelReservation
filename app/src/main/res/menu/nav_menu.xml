@@ -6,8 +6,12 @@
             android:icon="@drawable/ic_home"
             android:title="Home" />
     <item
+        android:id="@+id/ticketsFragment"
+        android:icon="@drawable/ic_airport"
+        android:title="Tickets"/>
+    <item
         android:id="@+id/travelsFragment"
-        android:icon="@drawable/ic_activity"
+        android:icon="@drawable/baseline_location_on_24"
         android:title="Travels" />
     <item
         android:id="@+id/settingFragment"

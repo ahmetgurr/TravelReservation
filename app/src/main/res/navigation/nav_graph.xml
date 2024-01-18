@@ -107,4 +107,9 @@
         <argument android:name="selectedPassengerId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/ticketsFragment"
+        android:name="com.example.travelreservation.ui.fragment.TicketsFragment"
+        android:label="fragment_tickets"
+        tools:layout="@layout/fragment_tickets" />
 </navigation>

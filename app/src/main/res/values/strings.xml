@@ -188,6 +188,7 @@ Travel Reservation Team\n
 
     <string name="information_text">To get detailed information about the processing of personal data, please read the information text.</string>
     <string name="chooseSeat_text">Please choose your seat!</string>
+
     <style name="SeatButton">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
