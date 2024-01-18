@@ -45,12 +45,6 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
             Toast.makeText(context, "Ticket List", Toast.LENGTH_SHORT).show()
         }
-        //Maps Button
-        binding.denemeMaps.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToMapsActivity()
-            Navigation.findNavController(it).navigate(action)
-            Toast.makeText(context, "Haritalar", Toast.LENGTH_SHORT).show()
-        }
         //For the try Button
         binding.dropdownFragment.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToDropdown()

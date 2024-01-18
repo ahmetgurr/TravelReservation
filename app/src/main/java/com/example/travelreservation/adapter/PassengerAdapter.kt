@@ -3,6 +3,7 @@ package com.example.travelreservation.adapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -64,6 +65,7 @@ class PassengerAdapter(
                     "selectedCityTo" to selectedCityTo
                 )
                 Navigation.findNavController(it).navigate(com.example.travelreservation.R.id.action_passengerInfoFragment_to_chooseSeatFragment, bundle)
+                Toast.makeText(it.context, "Choose Seat", Toast.LENGTH_SHORT).show()
             }
         }
     }

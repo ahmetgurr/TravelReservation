@@ -235,22 +235,12 @@
 
     <Button
         android:id="@+id/dropdownFragment"
-        android:layout_width="128dp"
-        android:layout_height="56dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="dropdownFragment"
-        app:layout_constraintBottom_toTopOf="@+id/denemeMaps"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/denemeMaps"
-        android:layout_width="372dp"
-        android:layout_height="48dp"
-        android:text="Check Maps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

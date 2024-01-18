@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_homeFragment_to_dropdown"
             app:destination="@id/dropdown" />
-        <action
-            android:id="@+id/action_homeFragment_to_mapsActivity"
-            app:destination="@id/mapsActivity" />
 
     </fragment>
     <fragment

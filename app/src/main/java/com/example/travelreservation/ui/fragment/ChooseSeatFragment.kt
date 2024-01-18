@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import androidx.navigation.Navigation
 import com.example.travelreservation.R
 import com.example.travelreservation.databinding.FragmentChooseSeatBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -51,9 +52,12 @@ class ChooseSeatFragment : Fragment() {
         createSeats()
         // Rezervasyon yap butonuna tıklanma işlemi
         binding.btnMakeReservation.setOnClickListener {
-            makeReservation()
+            if (selectedSeatNumber != null) {
+                makeReservation()
+            } else {
+                Toast.makeText(requireContext(), "Please select a seat", Toast.LENGTH_SHORT).show()
+            }
         }
-
     }
     private fun createSeats() {
         val gridLayout = binding.gridLayoutSeats
@@ -67,7 +71,6 @@ class ChooseSeatFragment : Fragment() {
                 params.columnSpec = GridLayout.spec(column)
                 cardView.layoutParams = params
                 gridLayout.addView(cardView)
-
                 // Firebase'den rezervasyon bilgilerini al
                 getReservationInfo(seatNumber)
             }

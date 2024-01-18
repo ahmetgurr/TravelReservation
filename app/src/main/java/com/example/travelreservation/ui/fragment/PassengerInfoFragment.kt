@@ -55,20 +55,6 @@ class PassengerInfoFragment : Fragment() {
             Navigation.nextPage(R.id.action_passengerInfoFragment_to_addPassengerFragment, it)
             Toast.makeText(context, "Add Passenger", Toast.LENGTH_SHORT).show()
         }
-
-        binding.btnContinue.setOnClickListener {
-            val selectedCityFrom = binding.textCityFrom.text.toString()
-            val selectedCityTo = binding.textCityTo.text.toString()
-
-            val action = PassengerInfoFragmentDirections
-                .actionPassengerInfoFragmentToChooseSeatFragment(
-                    selectedCityFrom,
-                    selectedCityTo,
-                    selectedPassengerId ?: ""
-                )
-            Navigation.findNavController(it).navigate(action)
-            Toast.makeText(context, "Ticket List", Toast.LENGTH_SHORT).show()
-        }
         // RecyclerView ve Adapter'ı oluşturun
         recyclerView = binding.recyclerView
         passengerAdapter = PassengerAdapter { passenger ->
