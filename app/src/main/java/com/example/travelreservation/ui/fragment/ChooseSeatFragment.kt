@@ -63,6 +63,8 @@ class ChooseSeatFragment : Fragment() {
     }
     private fun createSeats() {
         val gridLayout = binding.gridLayoutSeats
+        gridLayout.rowCount = 5
+        gridLayout.columnCount = 5
 
         for (row in 0 until gridLayout.rowCount) {
             for (column in 0 until gridLayout.columnCount) {
@@ -75,21 +77,24 @@ class ChooseSeatFragment : Fragment() {
                 gridLayout.addView(cardView)
                 // Firebase'den rezervasyon bilgilerini al
                 getReservationInfo(seatNumber)
+                // Koltukların boyutunu ayarla
+                params.width = 175
+                params.height = 150
+
             }
         }
     }
-
 
     private fun createSeatCard(seatNumber: Int): CardView {
         val cardView = CardView(requireContext())
         cardView.radius = 8f
         cardView.cardElevation = 4f
         cardView.useCompatPadding = true
-        cardView.setContentPadding(16, 16, 16, 16)
+        cardView.setContentPadding(20, 20, 20, 20)
 
         val textView = TextView(requireContext())
         textView.text = seatNumber.toString()
-        textView.textSize = 18f
+        textView.textSize = 20f
         textView.gravity = Gravity.CENTER
 
         cardView.addView(textView)
