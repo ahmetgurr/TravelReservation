@@ -61,7 +61,7 @@ class TravelRecyclerAdapter(
 
 
             //basınca genişleyen layout
-            holder.binding.linearLayoutArrowDown.setOnClickListener {
+            holder.binding.CardView.setOnClickListener {
                 // Tıklanan öğenin durumunu kontrol et
                 if (holder.binding.expandedLayout.visibility == View.GONE) {
                     // Genişletilecek bölüm gizliyse, görünür yap
@@ -71,6 +71,7 @@ class TravelRecyclerAdapter(
                     holder.binding.expandedLayout.visibility = View.GONE
                 }
             }
+
 
             holder.binding.textCityFrom.text = travelList.get(position).cityFrom
             holder.binding.textCityTo.text = travelList.get(position).cityTo
