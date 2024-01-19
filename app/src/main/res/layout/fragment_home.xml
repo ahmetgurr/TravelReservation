@@ -144,81 +144,30 @@
                 android:layout_marginHorizontal="16dp"
                 android:background="@color/red_700" />
 
-            <!-- Date & Hour -->
+            <!-- To Layout -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
-                android:weightSum="8">
+                android:weightSum="4">
 
-                <!-- Hours -->
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/calendar_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    app:srcCompat="@drawable/baseline_calendar_month_24_red" />
+
+                <EditText
+                    android:id="@+id/date_picker_id"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_weight="4"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="4"
-                        app:srcCompat="@drawable/ic_schedule_24px" />
-
-                    <TextView
-                        android:id="@+id/Time_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="4"
-                        android:text="Hours" />
-
-                    <Spinner
-                        android:id="@+id/spinnerHours"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:prompt="@string/select_hours"
-                        android:textAlignment="center" />
-
-
-                </LinearLayout>
-
-                <!-- Date -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_weight="4"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        app:srcCompat="@drawable/ic_date_range_24px" />
-
-                    <TextView
-                        android:id="@+id/Date_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:maxLines="2"
-                        android:text="Date" />
-
-                    <Spinner
-                        android:id="@+id/spinnerDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:prompt="@string/select_date"
-                        android:textAlignment="center" />
-
-                </LinearLayout>
-
+                    android:layout_margin="16dp"
+                    android:layout_weight="3.5"
+                    android:hint="Tarih seçin"
+                    android:inputType="date" />
             </LinearLayout>
 
             <!-- Search Flight Button -->

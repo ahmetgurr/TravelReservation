@@ -6,14 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.travelreservation.R
 import com.example.travelreservation.databinding.FragmentHomeBinding
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.textfield.TextInputEditText
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var cities: Array<String>
+    private lateinit var editTextBirthDay: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = FragmentHomeBinding.inflate(layoutInflater)
@@ -51,27 +59,8 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
             Toast.makeText(context, "Dropdown Sayfası", Toast.LENGTH_SHORT).show()
         }
-        //using spinner menu
-        val spinner = binding.spinnerHours
-        val spinner1 = binding.spinnerDate
-        //adapter for the "hours_days"
-        ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.hours_days,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
-        //adapter for the "week_days"
-        ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.week_days,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner1.adapter = adapter
-        }
+
+
         // DropDown menu for the "from" and "to" cities
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, cities)
         binding.planetsSpinnerAutoCompleteFrom.setAdapter(adapter)
@@ -98,5 +87,29 @@ class HomeFragment : Fragment() {
         binding.planetsSpinnerAutoCompleteTo.setOnClickListener {
             binding.planetsSpinnerAutoCompleteTo.showDropDown()
         }
+
+        editTextBirthDay = binding.datePickerId
+        setupDatePicker()
+
+
     }
+
+    private fun setupDatePicker() {
+        editTextBirthDay.setOnClickListener {
+            showDatePicker()
+        }
+    }
+
+    private fun showDatePicker() {
+        val builder = MaterialDatePicker.Builder.datePicker()
+        val picker = builder.build()
+        picker.addOnPositiveButtonClickListener { selection ->
+            val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+            val formattedDate = dateFormat.format(Date(selection))
+            editTextBirthDay.setText(formattedDate)
+        }
+        picker.show(parentFragmentManager, picker.toString())
+    }
+
+
 }
