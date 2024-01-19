@@ -1,27 +1,19 @@
 package com.example.travelreservation.adapter
 
-import android.content.Context
-import android.content.Intent
-import android.os.Bundle
-import android.transition.AutoTransition
-import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.ImageView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.travelreservation.R
 import com.example.travelreservation.databinding.RowLayoutBinding
 import com.example.travelreservation.model.Travel
-import com.example.travelreservation.ui.fragment.PassengerInfoFragment
 import com.example.travelreservation.ui.fragment.TravelListFragment
 import com.example.travelreservation.ui.fragment.TravelListFragmentDirections
 import java.util.zip.Inflater
 
 class TravelRecyclerAdapter(
     var travelList: ArrayList<Travel>,
+    var selectedDate: String,
     var listener: TravelListFragment
 ) : RecyclerView.Adapter<TravelRecyclerAdapter.RowHolder>() {
         class RowHolder(val binding: RowLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -78,6 +70,8 @@ class TravelRecyclerAdapter(
             holder.binding.textDistance.text = travelList.get(position).distance
             holder.binding.textHours.text = travelList.get(position).hours
             holder.binding.textPrice.text = travelList.get(position).price
+            holder.binding.textDate.text = selectedDate
+
         }
 
 

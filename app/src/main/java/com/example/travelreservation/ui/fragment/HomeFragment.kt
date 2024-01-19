@@ -45,10 +45,12 @@ class HomeFragment : Fragment() {
         binding.btnSearchFlight.setOnClickListener {
             val selectedCityFrom = binding.planetsSpinnerAutoCompleteFrom.text.toString()
             val selectedCityTo = binding.planetsSpinnerAutoCompleteTo.text.toString()
+            val selectedDate = binding.datePickerId.editableText.toString()
 
             val action = HomeFragmentDirections.actionHomeFragmentToTravelListFragment(
                 selectedCityFrom,
-                selectedCityTo
+                selectedCityTo,
+                selectedDate
             )
             Navigation.findNavController(it).navigate(action)
             Toast.makeText(context, "Ticket List", Toast.LENGTH_SHORT).show()

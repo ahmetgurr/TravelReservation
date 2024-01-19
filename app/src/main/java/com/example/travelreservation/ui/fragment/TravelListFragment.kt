@@ -1,23 +1,12 @@
 package com.example.travelreservation.ui.fragment
 
-import android.annotation.SuppressLint
-import android.app.Dialog
-import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.GridLayout
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelreservation.R
@@ -56,12 +45,20 @@ class TravelListFragment : Fragment() {
 
         val selectedCityFrom = arguments?.getString("selectedCityFrom")
         val selectedCityTo = arguments?.getString("selectedCityTo")
+        val selectedDate = arguments?.getString("selectedDate")
         loadData(selectedCityFrom, selectedCityTo)
 
         compositeDisposable = CompositeDisposable()
 
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
         binding.recyclerView.layoutManager = layoutManager
+
+        // TravelRecyclerAdapter'ı oluştur ve seçilen tarih bilgisini atayın
+        recyclerViewAdapter = selectedDate?.let { TravelRecyclerAdapter(ArrayList(), it, this) }
+        binding.recyclerView.adapter = recyclerViewAdapter
+
+
+
     }
 
     //cityFrom ve cityTo ile verileri yükleyen loadData() fonksiyonu
@@ -90,8 +87,9 @@ class TravelListFragment : Fragment() {
                             travelList
                         }
 
-                        recyclerViewAdapter = TravelRecyclerAdapter(ArrayList(filteredList), this@TravelListFragment)
-                        binding.recyclerView.adapter = recyclerViewAdapter
+                        recyclerViewAdapter?.travelList = ArrayList(filteredList)
+                        recyclerViewAdapter?.notifyDataSetChanged()
+
                     }
                 } else {
                     Toast.makeText(activity, "Error fetching travel data", Toast.LENGTH_SHORT).show()
