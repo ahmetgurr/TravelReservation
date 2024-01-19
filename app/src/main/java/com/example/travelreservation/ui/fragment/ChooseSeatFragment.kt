@@ -37,6 +37,9 @@ class ChooseSeatFragment : Fragment() {
         val textViewSurname = arguments?.getString("textViewSurname")
         val selectedCityFrom = arguments?.getString("selectedCityFrom")
         val selectedCityTo = arguments?.getString("selectedCityTo")
+        val selectedItemId = arguments?.getString("selectedItemId")
+
+        Log.d("ChooseSeatFragment selectedItemId", "Selected Item ID: $selectedItemId")
 
         val textName: TextView = view.findViewById(R.id.textViewName)
         val textSurname: TextView = view.findViewById(R.id.textViewSurname)
@@ -47,6 +50,7 @@ class ChooseSeatFragment : Fragment() {
         textSurname.text = textViewSurname
         textSelectedCityFrom.text = selectedCityFrom
         textSelectedCityTo.text = selectedCityTo
+
 
         // Koltukları oluştur
         createSeats()
@@ -179,6 +183,4 @@ class ChooseSeatFragment : Fragment() {
                 Log.w("ChooseSeatFragment", "Error getting reservation info", exception)
             }
     }
-
-
 }

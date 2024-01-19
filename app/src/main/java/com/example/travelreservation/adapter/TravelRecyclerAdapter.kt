@@ -39,7 +39,7 @@ class TravelRecyclerAdapter(
                     travel.cityFrom?.let { it2 ->
                         travel.cityTo?.let { it3 ->
                             TravelListFragmentDirections.actionTravelListFragmentToPassengerInfoFragment(
-                                it1,
+                                it1.toString(),
                                 it2,
                                 it3
                             )

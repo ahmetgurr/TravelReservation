@@ -42,7 +42,7 @@ class PassengerInfoFragment : Fragment() {
         val selectedCityFrom = arguments?.getString("selectedCityFrom")
         val selectedCityTo = arguments?.getString("selectedCityTo")
         // travel.id'yi logda yazdır
-        Log.d("PassengerInfoFragment", "Selected Item ID: $selectedItemId")
+        Log.d("PassengerInfoFragment selectedItemId", "Selected Item ID: $selectedItemId")
 
         val textCityFrom: TextView = view.findViewById(R.id.text_cityFrom)
         val textCityTo: TextView = view.findViewById(R.id.textCityTo)
@@ -69,7 +69,7 @@ class PassengerInfoFragment : Fragment() {
         // Firestore'dan yolcu verilerini alın ve Adapter'a ekleyin
         loadPassengers()
         // CardView'da seçili yolcuyu seçtikten sonra seçili şehiri göstermek için
-        passengerAdapter.setSelectedCities(selectedCityFrom, selectedCityTo)
+        passengerAdapter.setSelectedCities(selectedCityFrom, selectedCityTo, selectedItemId)
     }
     private fun loadPassengers() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid

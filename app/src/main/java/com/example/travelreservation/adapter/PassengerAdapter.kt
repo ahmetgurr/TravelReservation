@@ -16,14 +16,18 @@ class PassengerAdapter(
 ) : RecyclerView.Adapter<PassengerAdapter.PassengerViewHolder>() {
     private var selectedCityFrom: String = ""
     private var selectedCityTo: String = ""
+    private var selectedItemId: String = ""
     var passengerList: List<Passenger> = emptyList()
 
-    fun setSelectedCities(cityFrom: String?, cityTo: String?) {
+    fun setSelectedCities(cityFrom: String?, cityTo: String?, selectedItemId: String?) {
         if (cityFrom != null) {
             selectedCityFrom = cityFrom
         }
         if (cityTo != null) {
             selectedCityTo = cityTo
+        }
+        if (selectedItemId != null) {
+            this.selectedItemId = selectedItemId
         }
     }
 
@@ -62,7 +66,9 @@ class PassengerAdapter(
                     "textViewName" to passenger.Name,
                     "textViewSurname" to passenger.Surname,
                     "selectedCityFrom" to selectedCityFrom,
-                    "selectedCityTo" to selectedCityTo
+                    "selectedCityTo" to selectedCityTo,
+                    "selectedPassengerId" to passenger.id,
+                    "selectedItemId" to selectedItemId
                 )
                 Navigation.findNavController(it).navigate(com.example.travelreservation.R.id.action_passengerInfoFragment_to_chooseSeatFragment, bundle)
                 Toast.makeText(it.context, "Choose Seat", Toast.LENGTH_SHORT).show()

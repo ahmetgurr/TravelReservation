@@ -68,7 +68,7 @@
         tools:layout="@layout/fragment_passenger_info" >
         <argument
             android:name="selectedItemId"
-            app:argType="integer" />
+            app:argType="string" />
         <argument
             android:name="selectedCityFrom"
             app:argType="string" />
@@ -107,6 +107,9 @@
         <action
             android:id="@+id/action_chooseSeatFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="selectedItemId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/ticketsFragment"
