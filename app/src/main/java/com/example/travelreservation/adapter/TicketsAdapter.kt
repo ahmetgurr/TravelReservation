@@ -18,10 +18,11 @@ class TicketsAdapter(
     inner class TicketViewHolder(private val binding: ItemTicketBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(ticket: Ticket) {
             binding.apply {
-                textViewSeatNumber.text = "Seat No:${ticket.seatNumber}"
+
                 textCityFrom.text = "${ticket.cityFrom}"
                 textCityTo.text = "${ticket.cityTo}"
                 textViewName.text = "${ticket.userName}"
+                textViewSeatNumber.text = "Seat No:${ticket.seatNumber}"
                 textViewId.text = "Travel ID: ${ticket.id}"
 
                 buttonDelete.setOnClickListener {

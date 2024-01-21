@@ -98,4 +98,7 @@ dependencies {
     implementation ("io.reactivex.rxjava3:rxandroid:3.0.0")
 
     implementation ("com.google.android.material:material:1.6.1")
+
+    implementation ("com.google.firebase:firebase-firestore:24.10.0") // (En güncel sürüm numarasını kontrol edin)
+
 }

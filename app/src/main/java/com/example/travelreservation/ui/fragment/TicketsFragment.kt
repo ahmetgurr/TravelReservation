@@ -34,7 +34,7 @@ class TicketsFragment : Fragment(), TicketsAdapter.OnDeleteClickListener {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         val firestore = FirebaseFirestore.getInstance()
         val reservationCollection = firestore.collection("Users").document(userId!!)
-            .collection("Reservation")
+            .collection("Reservation").document(638!!.toString()).collection("Seats")
 
         // Firebase'den rezervasyon verilerini al
         reservationCollection.addSnapshotListener { snapshots, exception ->
@@ -71,7 +71,7 @@ class TicketsFragment : Fragment(), TicketsAdapter.OnDeleteClickListener {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         val firestore = FirebaseFirestore.getInstance()
         val reservationCollection = firestore.collection("Users").document(userId!!)
-            .collection("Reservation")
+            .collection("Reservation").document(638!!.toString()).collection("Seats")
         // Firestore'dan ilgili rezervasyonu sil
         ticket.id?.let {
             reservationCollection.document(it)

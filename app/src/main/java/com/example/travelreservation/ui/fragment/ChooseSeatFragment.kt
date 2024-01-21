@@ -22,22 +22,27 @@ class ChooseSeatFragment : Fragment() {
     private lateinit var binding: FragmentChooseSeatBinding
     private var selectedSeatNumber: Int? = null
     private val reservedSeats = mutableListOf<Int>()
+    private var selectedItemId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentChooseSeatBinding.inflate(inflater, container, false)
-        return binding.root }
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Diğer verileri al
         val textViewName = arguments?.getString("textViewName")
         val textViewSurname = arguments?.getString("textViewSurname")
         val selectedCityFrom = arguments?.getString("selectedCityFrom")
         val selectedCityTo = arguments?.getString("selectedCityTo")
-        val selectedItemId = arguments?.getString("selectedItemId")
+
+        // selectedItemId'yi al
+        selectedItemId = arguments?.getString("selectedItemId")
 
         Log.d("ChooseSeatFragment selectedItemId", "Selected Item ID: $selectedItemId")
 
@@ -51,9 +56,9 @@ class ChooseSeatFragment : Fragment() {
         textSelectedCityFrom.text = selectedCityFrom
         textSelectedCityTo.text = selectedCityTo
 
-
         // Koltukları oluştur
         createSeats()
+
         // Rezervasyon yap butonuna tıklanma işlemi
         binding.btnMakeReservation.setOnClickListener {
             if (selectedSeatNumber != null) {
@@ -65,6 +70,7 @@ class ChooseSeatFragment : Fragment() {
             }
         }
     }
+
     private fun createSeats() {
         val gridLayout = binding.gridLayoutSeats
         gridLayout.rowCount = 5
@@ -79,12 +85,12 @@ class ChooseSeatFragment : Fragment() {
                 params.columnSpec = GridLayout.spec(column)
                 cardView.layoutParams = params
                 gridLayout.addView(cardView)
+
                 // Firebase'den rezervasyon bilgilerini al
                 getReservationInfo(seatNumber)
                 // Koltukların boyutunu ayarla
                 params.width = 175
                 params.height = 150
-
             }
         }
     }
@@ -134,19 +140,21 @@ class ChooseSeatFragment : Fragment() {
         }
     }
 
-
-
     private fun makeReservation() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         val firestore = FirebaseFirestore.getInstance()
-        val reservationCollection =
-            firestore.collection("Users").document(userId!!).collection("Reservation")
+
+        // selectedItemId'ye göre "Users" koleksiyonunun altında "Reservation" koleksiyonu oluştur
+        val reservationCollection = firestore.collection("Users").document(userId!!)
+            .collection("Reservation").document(selectedItemId!!)
+            .collection("Seats")
 
         val reservationData = hashMapOf(
             "seatNumber" to selectedSeatNumber,
-            "cityFrom" to "SehirFrom",
-            "cityTo" to "SehirTo",
-            "userName" to "Kullanıcı Adı",
+            "cityFrom" to binding.textCityFrom.text.toString(),
+            "cityTo" to binding.textCityTo.text.toString(),
+            "userName" to "${binding.textViewName.text} ${binding.textViewSurname.text}",
+            "selectedItemId" to selectedItemId  // selectedItemId'yi ekle
         )
 
         reservationCollection.add(reservationData)
@@ -164,8 +172,11 @@ class ChooseSeatFragment : Fragment() {
     private fun getReservationInfo(seatNumber: Int) {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         val firestore = FirebaseFirestore.getInstance()
+
+        // selectedItemId'ye göre "Users" koleksiyonunun altında "Reservation" koleksiyonunu al
         val reservationCollection = firestore.collection("Users").document(userId!!)
-            .collection("Reservation")
+            .collection("Reservation").document(selectedItemId!!)
+            .collection("Seats")
 
         reservationCollection
             .whereEqualTo("seatNumber", seatNumber)
@@ -184,3 +195,4 @@ class ChooseSeatFragment : Fragment() {
             }
     }
 }
+

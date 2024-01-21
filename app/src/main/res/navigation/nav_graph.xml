@@ -110,10 +110,17 @@
         <argument
             android:name="selectedItemId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_chooseSeatFragment_to_ticketsFragment"
+            app:destination="@id/ticketsFragment" />
     </fragment>
     <fragment
         android:id="@+id/ticketsFragment"
         android:name="com.example.travelreservation.ui.fragment.TicketsFragment"
         android:label="fragment_tickets"
-        tools:layout="@layout/fragment_tickets" />
+        tools:layout="@layout/fragment_tickets" >
+        <argument
+            android:name="selectedItemId"
+            app:argType="string" />
+    </fragment>
 </navigation>
