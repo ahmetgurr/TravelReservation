@@ -44,9 +44,29 @@ This project will provide users with a useful tool to assist in planning and mak
 
 </br>
 
-## Add Screen
-| Add | Add Successful |
+## Ticket List
+| Ticket List | Ticket Delete |
 | ---------------------------- | ---------------------------- |
-|| |
+|![2TicketList](https://github.com/ahmetgurr/TravelReservation/assets/92628011/2f897df4-8327-4737-9f7c-84243a3faac3) |![2TicketListDeleted](https://github.com/ahmetgurr/TravelReservation/assets/92628011/63ecdaa0-60dd-4295-afe5-80673c95f0b4)|
 
 </br>
+
+
+## Travels Screen / Maps
+| Choose Location |  Delete | Saved Location |
+| ---------------------------- | ---------------------------- |
+| ![3ChooseLocation](https://github.com/ahmetgurr/TravelReservation/assets/92628011/df7cf880-78b8-4396-a177-07c30d3bf8ee) | ![3Delete](https://github.com/ahmetgurr/TravelReservation/assets/92628011/ef406368-e600-4dad-a92a-a2000bb4ab69) | ![3SavedLocation](https://github.com/ahmetgurr/TravelReservation/assets/92628011/4eae9e26-1b8a-44ff-bb49-65d521c3fa71)|
+
+</br>
+
+
+## Profile Page
+| Contact..  |  Profile |
+| ---------------------------- | ---------------------------- |
+| ![4ContactUs](https://github.com/ahmetgurr/TravelReservation/assets/92628011/76a96b65-ffb6-4f42-a1b1-8fd9920cd263) | ![4Profile](https://github.com/ahmetgurr/TravelReservation/assets/92628011/8028655a-2642-474c-8f0e-d5d98bdcc90e) |
+
+
+
+</br>
+
+
