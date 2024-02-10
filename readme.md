@@ -26,6 +26,14 @@ This project will provide users with a useful tool to assist in planning and mak
 [ekankaydirecipe.webm](https://github.com/ahmetgurr/TravelReservation/assets/92628011/aea17147-773e-4580-b383-96841349fab5)
 
 
+https://github.com/ahmetgurr/TravelReservation/assets/92628011/252f2169-61c6-4de7-b3ec-e38384a35b26
+
+
+
+https://github.com/ahmetgurr/TravelReservation/assets/92628011/e2d6f873-c7ca-42cf-a16c-43ba0eadced2
+
+
+
 
 
 ## Login & Register Screen
