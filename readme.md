@@ -54,7 +54,7 @@ This project will provide users with a useful tool to assist in planning and mak
 
 ## Travels Screen / Maps
 | Choose Location |  Delete | Saved Location |
-| ---------------------------- | ---------------------------- |
+| ---------------------------- | ---------------------------- | ---------------------------- |
 | ![3ChooseLocation](https://github.com/ahmetgurr/TravelReservation/assets/92628011/df7cf880-78b8-4396-a177-07c30d3bf8ee) | ![3Delete](https://github.com/ahmetgurr/TravelReservation/assets/92628011/ef406368-e600-4dad-a92a-a2000bb4ab69) | ![3SavedLocation](https://github.com/ahmetgurr/TravelReservation/assets/92628011/4eae9e26-1b8a-44ff-bb49-65d521c3fa71)|
 
 </br>
