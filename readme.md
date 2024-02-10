@@ -20,11 +20,9 @@ This project will provide users with a useful tool to assist in planning and mak
 
  
  ## Video
- 
-| TravelReservation Video |
 | ---------------------------- |
 
-[REGISTER.mp4](https://github.com/ahmetgurr/TravelReservation/assets/92628011/252f2169-61c6-4de7-b3ec-e38384a35b26)
+[ TravelReservation Video ](https://github.com/ahmetgurr/TravelReservation/assets/92628011/252f2169-61c6-4de7-b3ec-e38384a35b26)
 
 
 https://github.com/ahmetgurr/TravelReservation/assets/92628011/252f2169-61c6-4de7-b3ec-e38384a35b26
